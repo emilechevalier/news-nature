@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+sent_log.json
+news.log
+preview.html
