@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Les rivières de Suède retrouvent leur liberté grâce à l'élimination de barrages",
+    "summary": "Trois barrages ont été retirés en Suède en 2025, libérant plus de 100 km de cours d'eau et permettant la réintroduction de 200 000 juvéniles de truites brunes. En Italie, un barrage de 30 mètres sur la rivière Liri a aussi été supprimé, libérant 11 km d'habitat pour la faune aquatique des Apennins.",
+    "category": "Rewilding",
+    "region": "Europe",
+    "win_type": "Régénération d'écosystème",
+    "emoji": "🐟",
+    "date": "2025"
+  },
+  {
+    "title": "Le vautour moine revient en force en Espagne et en Bulgarie",
+    "summary": "En 2025, seize vautours moines ont été relâchés dans les Hautes Terres Ibériques — le plus grand lâcher depuis le début du programme en 2020. En Bulgarie, sept individus supplémentaires ont rejoint les Rhodopes. Les équipes anticipent l'établissement de colonies nicheuses, signe d'un rétablissement durable de l'espèce.",
+    "category": "Faune",
+    "region": "Europe",
+    "win_type": "Retour d'espèce",
+    "emoji": "🦅",
+    "date": "2025"
+  },
+  {
+    "title": "Le bison européen réintroduit en Espagne pour la première fois depuis des siècles",
+    "summary": "Neuf bisons européens ont été relâchés pour la première fois dans les Hautes Terres Ibériques dans le cadre d'un programme de rewilding international. En dix ans, la population totale de bisons sauvages en Europe est passée de 2 500 à 7 000 individus — une renaissance remarquable pour le plus grand mammifère terrestre du continent.",
+    "category": "Rewilding",
+    "region": "Europe",
+    "win_type": "Rebond de population",
+    "emoji": "🦬",
+    "date": "2025"
+  },
+  {
+    "title": "Les koalas rebondissent génétiquement après l'effondrement de leur population",
+    "summary": "Une étude publiée dans Science en mars 2026 révèle que les koalas australiens reconstruisent activement leur diversité génétique grâce à une expansion rapide de leurs populations. La recombinaison génétique entre individus génère de nouvelles combinaisons d'ADN, renforçant la résilience de l'espèce à long terme.",
+    "category": "Faune",
+    "region": "Océanie",
+    "win_type": "Rebond de population",
+    "emoji": "🐨",
+    "date": "Mars 2026"
+  },
+  {
+    "title": "La déforestation en Amazonie brésilienne atteint son niveau le plus bas en 12 ans",
+    "summary": "Les données satellites de l'INPE montrent une chute de 35,4 % de la déforestation entre août 2025 et janvier 2026, atteignant le niveau le plus bas depuis 2014. Les politiques de protection renforcées sous le gouvernement Lula sont créditées de ce recul historique.",
+    "category": "Forêt",
+    "region": "Amériques",
+    "win_type": "Régénération d'écosystème",
+    "emoji": "🌳",
+    "date": "Février-Mars 2026"
+  },
+  {
+    "title": "La cigogne bois retirée de la liste des espèces menacées après 42 ans de protection",
+    "summary": "La cigogne bois américaine a officiellement été retirée de la liste des espèces en danger aux États-Unis le 9 mars 2026. Sa population de nicheurs est passée d'environ 5 000 paires dans les années 1980 à entre 10 000 et 14 000 paires aujourd'hui.",
+    "category": "Espèces",
+    "region": "Amériques",
+    "win_type": "Retour d'espèce",
+    "emoji": "🦢",
+    "date": "Mars 2026"
+  },
+  {
+    "title": "La Colombie crée son 61e parc national, protégeant un corridor vital Amazonie-Orinoquia",
+    "summary": "Le parc naturel Serranía de Manacacías a été officiellement créé, couvrant 68 180 hectares. Ce couloir relie la savane de l'Orinoquia à la forêt amazonienne et abrite un quart de toutes les espèces d'oiseaux connues en Colombie.",
+    "category": "Politique",
+    "region": "Amériques",
+    "win_type": "Nouvelle protection",
+    "emoji": "🦜",
+    "date": "2026"
+  },
+  {
+    "title": "Les marsupiaux australiens montrent des signes de rétablissement encourageants",
+    "summary": "Plusieurs espèces de marsupiaux australiens affichent des tendances démographiques positives. Les programmes combinant restauration d'habitats, contrôle des prédateurs introduits et initiatives d'élevage portent leurs fruits pour des animaux emblématiques dont les populations avaient sévèrement décliné.",
+    "category": "Faune",
+    "region": "Océanie",
+    "win_type": "Rebond de population",
+    "emoji": "🦘",
+    "date": "Mars 2026"
+  }
+]
