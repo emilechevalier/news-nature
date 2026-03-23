@@ -6,7 +6,8 @@
     "region": "Europe",
     "win_type": "Rebond de population",
     "emoji": "🦬",
-    "date": "Mars 2026"
+    "date": "Mars 2026",
+    "url": "https://rewildingeurope.com/world-rewilding-day/"
   },
   {
     "title": "Jersey quadruple sa zone marine protégée — un record pour les îles britanniques",
@@ -15,7 +16,8 @@
     "region": "Europe",
     "win_type": "Nouvelle protection",
     "emoji": "🐟",
-    "date": "Mars 2026"
+    "date": "Mars 2026",
+    "url": "https://www.bluemarinefoundation.com/news/"
   },
   {
     "title": "Virunga 2026 : sept gorillons nés dont des jumeaux, couronnant une réintroduction historique",
@@ -24,7 +26,8 @@
     "region": "Afrique",
     "win_type": "Retour d'espèce",
     "emoji": "🦍",
-    "date": "Janvier 2026"
+    "date": "Janvier 2026",
+    "url": "https://news.mongabay.com/short-article/2026/01/twin-infant-mountain-gorillas-born-in-drc/"
   },
   {
     "title": "Inde : 53 guépards dont 33 nés sur le sol indien, le Project Cheetah dépasse les espoirs",
@@ -33,7 +36,8 @@
     "region": "Asie",
     "win_type": "Rebond de population",
     "emoji": "🐆",
-    "date": "Mars 2026"
+    "date": "Mars 2026",
+    "url": "https://phys.org/news/2026-02-india-celebrates-birth-cheetah-cubs.html"
   },
   {
     "title": "Brésil : des singes hurleurs vaccinés contre la fièvre jaune retrouvent la forêt Atlantique",
@@ -42,7 +46,8 @@
     "region": "Amériques",
     "win_type": "Retour d'espèce",
     "emoji": "🐒",
-    "date": "2025"
+    "date": "2025",
+    "url": "https://news.mongabay.com/short-article/2025/05/brazil-rewilds-urban-forest-with-vaccinated-brown-howler-monkeys/"
   },
   {
     "title": "Indonésie : 32 dugongs observés ensemble dans les Moluques — un record mondial",
@@ -51,7 +56,8 @@
     "region": "Asie",
     "win_type": "Rebond de population",
     "emoji": "🐬",
-    "date": "Février 2026"
+    "date": "Février 2026",
+    "url": "https://english.lingkarbumi.com/2026/02/09/dugongs-found-in-numbers-rarely-seen-anywhere-else/"
   },
   {
     "title": "Mission Nature 2026 : la France investit dans la restauration concrète des écosystèmes",
@@ -60,6 +66,7 @@
     "region": "Europe",
     "win_type": "Politique de conservation",
     "emoji": "🌿",
-    "date": "Mars 2026"
+    "date": "Mars 2026",
+    "url": "https://topoutremer.com/2026/03/09/lofb-lance-lappel-a-projets-mission-nature-2026-dedie-a-la-restauration-de-la-biodiversite/"
   }
 ]

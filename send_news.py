@@ -46,7 +46,8 @@ Réponds UNIQUEMENT avec un tableau JSON (sans markdown, sans backticks, sans ex
     "region": "Mondial|Europe|Asie|Amériques|Afrique|Arctique|Océanie",
     "win_type": "Rebond de population|Régénération d'écosystème|Nouvelle protection|Réduction de pollution|Retour d'espèce|Rewilding",
     "emoji": "emoji animal ou nature pertinent",
-    "date": "date approximative comme 'Mars 2026'"
+    "date": "date approximative comme 'Mars 2026'",
+    "url": "URL directe vers l'article source (Mongabay, BBC, etc.)"
   }
 ]"""
 
@@ -265,7 +266,7 @@ def build_web_page(news):
             <h2 class="card-title">{item.get("title","")}</h2>
             <p class="card-summary">{item.get("summary","")}</p>
             <div class="card-footer">
-              <span class="card-date">{item.get("date","")}</span>
+              <span class="card-date">{item.get("date","")}{(' · <a class="source-link" href="' + item["url"] + '" target="_blank" rel="noopener">→ source</a>') if item.get("url") else ""}</span>
               <span class="win-badge" style="color:{color}">
                 <span class="win-dot" style="background:{color}"></span>
                 {win}
@@ -405,6 +406,14 @@ def build_web_page(news):
       align-items: center;
     }}
     .card-date {{ font-size: 11px; color: #2a5a3a; font-family: -apple-system, sans-serif; }}
+    .source-link {{
+      font-size: 11px;
+      color: #4a9a5a;
+      text-decoration: none;
+      font-family: -apple-system, sans-serif;
+      letter-spacing: .3px;
+    }}
+    .source-link:hover {{ text-decoration: underline; }}
     .win-badge {{
       display: flex;
       align-items: center;
