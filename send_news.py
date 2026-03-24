@@ -33,7 +33,7 @@ Trouve 6-8 histoires variées en respectant impérativement cette répartition g
 - Au moins 1 histoire d'Asie, Afrique, Océanie ou Arctique
 - Le reste au choix
 
-Si une bonne nouvelle récente est difficile à trouver pour une région, remonte jusqu'à 3 semaines.
+Au moins 5 articles sur les 7 derniers jours. Le fallback à 3 semaines est autorisé uniquement si aucune bonne nouvelle récente n'existe pour une région donnée — dans ce cas, indique une date précise dans le champ "date".
 
 Privilégie ces sources fiables : Mongabay, BBC Environment, National Geographic, The Guardian Environment, WWF, IUCN, Conservation International, Nature (journal), Science (journal), NOAA Fisheries, BirdLife International. Utilise d'autres sources sérieuses si nécessaire.
 
@@ -266,7 +266,7 @@ def build_web_page(news):
             <h2 class="card-title">{item.get("title","")}</h2>
             <p class="card-summary">{item.get("summary","")}</p>
             <div class="card-footer">
-              <span class="card-date">{item.get("date","")}{(' · <a class="source-link" href="' + item["url"] + '" target="_blank" rel="noopener">→ source</a>') if item.get("url") else ""}</span>
+              <span class="card-date">{item.get("date","")}{(' · <a class="source-link" href="' + (item.get("source_url") or item.get("url","")) + '" target="_blank" rel="noopener">→ source</a>') if (item.get("source_url") or item.get("url")) else ""}</span>
               <span class="win-badge" style="color:{color}">
                 <span class="win-dot" style="background:{color}"></span>
                 {win}
