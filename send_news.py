@@ -8,6 +8,8 @@ import time
 import sys
 import os
 import subprocess
+import urllib.request
+import urllib.parse
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -48,7 +50,8 @@ Réponds UNIQUEMENT avec un tableau JSON (sans markdown, sans backticks, sans ex
     "win_type": "Rebond de population|Régénération d'écosystème|Nouvelle protection|Réduction de pollution|Retour d'espèce|Rewilding",
     "emoji": "emoji animal ou nature pertinent",
     "date": "date approximative comme 'Mars 2026'",
-    "url": "URL directe vers l'article source (Mongabay, BBC, etc.)"
+    "url": "URL directe vers l'article source (Mongabay, BBC, etc.)",
+    "image_query": "2-4 mots-clés EN ANGLAIS pour trouver une photo pertinente sur Unsplash (ex: 'european bison grassland', 'coral reef fish', 'amazon rainforest aerial')"
   }
 ]"""
 
@@ -108,6 +111,40 @@ def fetch_news():
         raise ValueError(f"No JSON array in Claude output:\n{raw[:500]}")
 
     return json.loads(cleaned[start:end])
+
+
+def fetch_images(news, access_key):
+    """Fetch a landscape photo from Unsplash for each article using image_query."""
+    if not access_key:
+        print("No Unsplash key — skipping images.")
+        return
+    base = "https://api.unsplash.com/search/photos"
+    for item in news:
+        query = item.get("image_query", "")
+        if not query:
+            continue
+        try:
+            params = urllib.parse.urlencode({
+                "query": query,
+                "orientation": "landscape",
+                "per_page": 1,
+                "content_filter": "high",
+            })
+            req = urllib.request.Request(
+                f"{base}?{params}",
+                headers={"Authorization": f"Client-ID {access_key}",
+                         "Accept-Version": "v1"},
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read())
+            if data.get("results"):
+                photo = data["results"][0]
+                item["image_url"] = photo["urls"]["small"]          # 400px — grid cards
+                item["image_url_large"] = photo["urls"]["regular"]  # 1080px — featured
+                item["image_credit"] = photo["user"]["name"]
+                item["image_credit_url"] = photo["user"]["links"]["html"]
+        except Exception as e:
+            print(f"  Image fetch failed for '{query}': {e}")
 
 
 def build_email_html(news):
@@ -231,6 +268,10 @@ def run(test_mode=False, mock_data=None):
         print("No news returned.")
         return
 
+    unsplash_key = config.get("unsplash_access_key", "")
+    if unsplash_key and not mock_data:
+        fetch_images(news, unsplash_key)
+
     date_str = datetime.now().strftime("%d %B %Y")
     subject  = f"🌿 La Nature Résiste — {date_str}"
     html     = build_email_html(news)
@@ -238,10 +279,15 @@ def run(test_mode=False, mock_data=None):
     if test_mode:
         with open(PREVIEW_PATH, "w", encoding="utf-8") as f:
             f.write(html)
+        web_html = build_web_page(news)
+        with open(WEB_PATH, "w", encoding="utf-8") as f:
+            f.write(web_html)
         print(f"\n{len(news)} articles:")
         for i, item in enumerate(news, 1):
-            print(f"  {i}. [{item.get('win_type','?'):<24}] [{item.get('category')}] {item.get('title')}")
-        print(f"\nHTML preview → {PREVIEW_PATH}")
+            has_img = "📷" if item.get("image_url") else "  "
+            print(f"  {i}. {has_img} [{item.get('win_type','?'):<24}] [{item.get('category')}] {item.get('title')}")
+        print(f"\nEmail preview → {PREVIEW_PATH}")
+        print(f"Web preview   → {WEB_PATH}")
         return
 
     send_email(config, subject, html)
@@ -295,11 +341,19 @@ def build_web_page(news, history=None):
         fsrc_html = (
             f'<a class="source-link" href="{fsrc}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
         ) if fsrc else ""
+        fimg = featured.get("image_url_large", "") or featured.get("image_url", "")
+        fimg_html = f'<div class="featured-image" style="background-image:url({fimg})"></div>' if fimg else ""
+        fcredit = featured.get("image_credit", "")
+        fcredit_url = featured.get("image_credit_url", "")
+        fcredit_html = (
+            f'<div class="image-credit">Photo: <a href="{fcredit_url}?utm_source=la_nature_resiste&utm_medium=referral" '
+            f'target="_blank" rel="noopener">{fcredit}</a> / Unsplash</div>'
+        ) if fcredit else ""
         featured_html = f"""
   <div class="featured-wrapper">
     <div class="featured-label">✦ Article phare de la semaine</div>
     <div class="featured-card" style="border-top:4px solid {fc}">
-      <div class="featured-emoji-wrap">{featured.get("emoji","🌿")}</div>
+      {fimg_html}
       <div class="featured-content">
         <div class="card-tags" style="margin-bottom:12px">
           <span class="tag-cat" style="color:{fc}">{featured.get("category","").upper()}</span>
@@ -312,6 +366,7 @@ def build_web_page(news, history=None):
           <span class="card-date">{featured.get("date","")}</span>
           {fsrc_html}
         </div>
+        {fcredit_html}
       </div>
     </div>
   </div>"""
@@ -325,8 +380,17 @@ def build_web_page(news, history=None):
         source_html = (
             f'<a class="source-link" href="{source}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
         ) if source else ""
+        img_url = item.get("image_url", "")
+        img_html = f'<div class="card-image" style="background-image:url({img_url})"></div>' if img_url else ""
+        credit = item.get("image_credit", "")
+        credit_url = item.get("image_credit_url", "")
+        credit_html = (
+            f'<div class="image-credit">Photo: <a href="{credit_url}?utm_source=la_nature_resiste&utm_medium=referral" '
+            f'target="_blank" rel="noopener">{credit}</a> / Unsplash</div>'
+        ) if credit else ""
         cards_html += f"""
         <div class="card" data-region="{item.get('region','')}" style="border-top:3px solid {color}">
+          {img_html}
           <div class="card-body">
             <div class="card-meta">
               <div class="card-tags">
@@ -342,6 +406,7 @@ def build_web_page(news, history=None):
               <span class="card-date">{item.get("date","")}</span>
               {source_html}
             </div>
+            {credit_html}
           </div>
         </div>"""
 
@@ -494,20 +559,18 @@ def build_web_page(news, history=None):
     .featured-card {{
       background: #ffffff;
       border: 1px solid #e0ddd4;
-      display: flex;
-      gap: 32px;
-      align-items: flex-start;
-      padding: 32px;
+      overflow: hidden;
     }}
 
-    .featured-emoji-wrap {{
-      font-size: 52px;
-      line-height: 1;
-      flex-shrink: 0;
-      padding-top: 4px;
+    .featured-image {{
+      width: 100%;
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      background-color: #e8e6de;
     }}
 
-    .featured-content {{ flex: 1; min-width: 0; }}
+    .featured-content {{ padding: 32px; }}
 
     .featured-title {{
       font-size: clamp(18px, 2.5vw, 24px);
@@ -527,8 +590,8 @@ def build_web_page(news, history=None):
     }}
 
     @media (max-width: 600px) {{
-      .featured-card {{ flex-direction: column; gap: 16px; padding: 20px; }}
-      .featured-emoji-wrap {{ font-size: 36px; }}
+      .featured-image {{ height: 200px; }}
+      .featured-content {{ padding: 20px; }}
     }}
 
     /* Grid */
@@ -554,6 +617,14 @@ def build_web_page(news, history=None):
     }}
 
     .card.hidden {{ display: none; }}
+
+    .card-image {{
+      width: 100%;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      background-color: #e8e6de;
+    }}
 
     .card-body {{ padding: 24px; }}
 
@@ -636,6 +707,20 @@ def build_web_page(news, history=None):
     }}
 
     .source-link:hover {{ text-decoration: underline; }}
+
+    .image-credit {{
+      font-size: 10px;
+      color: #bbb;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-top: 8px;
+    }}
+
+    .image-credit a {{
+      color: #bbb;
+      text-decoration: none;
+    }}
+
+    .image-credit a:hover {{ text-decoration: underline; }}
 
     .empty-msg {{
       grid-column: 1/-1;
@@ -817,6 +902,10 @@ def publish_to_github(news):
     history = load_json(HISTORY_PATH, default=[])
     html = build_web_page(news, history)
 
+    with open(WEB_PATH, "w", encoding="utf-8") as f:
+        f.write(html)
+    save_json(os.path.join(SCRIPT_DIR, "news_data.json"), news)
+
     date_str = datetime.now().strftime("%d %B %Y")
     env = {k: v for k, v in os.environ.items()}
     cmds = [
@@ -835,12 +924,19 @@ def main():
     arg = sys.argv[1].lower() if len(sys.argv) > 1 else ""
     if arg == "--test-email":
         # Test email pipeline with sample data (no Claude call)
+        config = load_json(CONFIG_PATH)
         sample = [
-            {"title": "Test: Coral Reef Recovery in Pacific", "summary": "Scientists report unprecedented recovery...",
-             "category": "Ocean", "region": "Asia", "win_type": "Ecosystem recovery", "emoji": "🐠", "date": "March 2026"},
-            {"title": "Test: Wolves Return to French Alps", "summary": "Wolf population reaches 200 individuals...",
-             "category": "Wildlife", "region": "Europe", "win_type": "Species return", "emoji": "🐺", "date": "March 2026"},
+            {"title": "Test: Coral Reef Recovery in Pacific", "summary": "Scientists report unprecedented recovery of coral reefs across the Western Pacific, with coverage increasing 25% since 2023.",
+             "category": "Ocean", "region": "Asia", "win_type": "Ecosystem recovery", "emoji": "🐠", "date": "March 2026",
+             "image_query": "coral reef tropical fish"},
+            {"title": "Test: Wolves Return to French Alps", "summary": "Wolf population reaches 200 individuals in the French Alps, marking a historic milestone for European rewilding efforts.",
+             "category": "Wildlife", "region": "Europe", "win_type": "Species return", "emoji": "🐺", "date": "March 2026",
+             "image_query": "grey wolf forest"},
         ]
+        # Fetch images for test data too
+        unsplash_key = config.get("unsplash_access_key", "")
+        if unsplash_key:
+            fetch_images(sample, unsplash_key)
         run(test_mode=True, mock_data=sample)
     elif arg == "--test":
         run(test_mode=True)
