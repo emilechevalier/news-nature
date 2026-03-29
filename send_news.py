@@ -12,12 +12,13 @@ from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
-CONFIG_PATH  = os.path.join(SCRIPT_DIR, "config.json")
-LOG_PATH     = os.path.join(SCRIPT_DIR, "sent_log.json")
-PREVIEW_PATH = os.path.join(SCRIPT_DIR, "preview.html")
-WEB_PATH     = os.path.join(SCRIPT_DIR, "index.html")
-CLAUDE_BIN   = "/Users/ech/.local/bin/claude"
+SCRIPT_DIR    = os.path.dirname(os.path.abspath(__file__))
+CONFIG_PATH   = os.path.join(SCRIPT_DIR, "config.json")
+LOG_PATH      = os.path.join(SCRIPT_DIR, "sent_log.json")
+HISTORY_PATH  = os.path.join(SCRIPT_DIR, "news_history.json")
+PREVIEW_PATH  = os.path.join(SCRIPT_DIR, "preview.html")
+WEB_PATH      = os.path.join(SCRIPT_DIR, "index.html")
+CLAUDE_BIN    = "/Users/ech/.local/bin/claude"
 
 MAX_RETRIES = 3
 RETRY_DELAY = 900  # 15 min between retries
@@ -260,9 +261,11 @@ def run(test_mode=False, mock_data=None):
     print(f"Logged. Total digests sent: {len(log['sent'])}")
 
 
-def build_web_page(news):
+def build_web_page(news, history=None):
     date_str = datetime.now().strftime("%A %d %B %Y")
     updated  = datetime.now().strftime("%d/%m/%Y à %H:%M")
+    if history is None:
+        history = []
 
     cards_html = ""
     for item in news:
@@ -291,6 +294,29 @@ def build_web_page(news):
             </div>
           </div>
         </div>"""
+
+    # Build history HTML — compact list grouped by issue
+    history_html = ""
+    for issue in history:
+        issue_articles = issue.get("articles", [])
+        rows = ""
+        for a in issue_articles:
+            src = a.get("source_url") or a.get("url", "")
+            src_html = f'<a class="hist-link" href="{src}" target="_blank" rel="noopener">↗</a>' if src else ""
+            rows += f"""
+          <li class="hist-item">
+            <span class="hist-emoji">{a.get("emoji","🌿")}</span>
+            <span class="hist-title">{a.get("title","")}</span>
+            {src_html}
+          </li>"""
+        history_html += f"""
+        <div class="hist-issue">
+          <div class="hist-issue-date">{issue.get("label","")}</div>
+          <ul class="hist-list">{rows}
+          </ul>
+        </div>"""
+    if not history_html:
+        history_html = '<p class="hist-empty">L\'historique s\'enrichira à chaque nouvelle édition.</p>'
 
     return f"""<!DOCTYPE html>
 <html lang="fr">
@@ -495,6 +521,81 @@ def build_web_page(news):
       text-transform: uppercase;
     }}
 
+    /* History view */
+    #history-view {{
+      display: none;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }}
+
+    .hist-issue {{
+      margin-bottom: 40px;
+    }}
+
+    .hist-issue-date {{
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #d8d4c4;
+      margin-bottom: 4px;
+    }}
+
+    .hist-list {{
+      list-style: none;
+    }}
+
+    .hist-item {{
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ece9e0;
+    }}
+
+    .hist-emoji {{
+      font-size: 14px;
+      flex-shrink: 0;
+      line-height: 1.5;
+    }}
+
+    .hist-title {{
+      flex: 1;
+      font-size: 14px;
+      color: #1a1a1a;
+      line-height: 1.4;
+      font-family: Georgia, 'Times New Roman', serif;
+    }}
+
+    .hist-link {{
+      font-size: 11px;
+      color: #024873;
+      text-decoration: none;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+      opacity: 0.7;
+    }}
+
+    .hist-link:hover {{ opacity: 1; }}
+
+    .hist-empty {{
+      text-align: center;
+      padding: 60px 20px;
+      color: #bbb;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }}
+
+    /* History tab — aligned right */
+    .tab-history {{
+      margin-left: auto;
+      border-left: 1px solid #d8d4c4;
+    }}
+
     footer {{
       text-align: center;
       padding: 28px 24px;
@@ -520,12 +621,17 @@ def build_web_page(news):
       <button class="tab active" data-filter="all">Toutes les régions</button>
       <button class="tab" data-filter="europe">Europe</button>
       <button class="tab" data-filter="world">Reste du monde</button>
+      <button class="tab tab-history" data-filter="history">Historique</button>
     </div>
   </div>
 
   <div id="grid">
     {cards_html}
     <div class="empty-msg" id="empty-msg" style="display:none">Aucune actualité pour ce filtre.</div>
+  </div>
+
+  <div id="history-view">
+    {history_html}
   </div>
 
   <footer>
@@ -536,6 +642,8 @@ def build_web_page(news):
     const tabs = document.querySelectorAll('.tab');
     const cards = document.querySelectorAll('.card');
     const emptyMsg = document.getElementById('empty-msg');
+    const grid = document.getElementById('grid');
+    const historyView = document.getElementById('history-view');
 
     tabs.forEach(tab => {{
       tab.addEventListener('click', () => {{
@@ -543,8 +651,17 @@ def build_web_page(news):
         tab.classList.add('active');
 
         const filter = tab.dataset.filter;
-        let visible = 0;
 
+        if (filter === 'history') {{
+          grid.style.display = 'none';
+          historyView.style.display = 'block';
+          return;
+        }}
+
+        grid.style.display = 'grid';
+        historyView.style.display = 'none';
+
+        let visible = 0;
         cards.forEach(card => {{
           const region = card.dataset.region || '';
           const isEurope = region === 'Europe';
@@ -564,16 +681,27 @@ def build_web_page(news):
 </html>"""
 
 
+def append_to_history(news):
+    """Append current issue to news_history.json."""
+    history = load_json(HISTORY_PATH, default=[])
+    today = datetime.now().strftime("%Y-%m-%d")
+    label = datetime.now().strftime("%-d %B %Y")
+    # Avoid duplicate entries for the same day
+    if not history or history[0].get("date") != today:
+        history.insert(0, {"date": today, "label": label, "articles": news})
+        save_json(HISTORY_PATH, history)
+
+
 def publish_to_github(news):
     """Generate index.html and push to GitHub Pages."""
-    html = build_web_page(news)
-    with open(WEB_PATH, "w", encoding="utf-8") as f:
-        f.write(html)
+    append_to_history(news)
+    history = load_json(HISTORY_PATH, default=[])
+    html = build_web_page(news, history)
 
     date_str = datetime.now().strftime("%d %B %Y")
     env = {k: v for k, v in os.environ.items()}
     cmds = [
-        ["git", "add", "index.html"],
+        ["git", "add", "index.html", "news_history.json"],
         ["git", "commit", "-m", f"news: {date_str}"],
         ["git", "push", "origin", "main"],
     ]

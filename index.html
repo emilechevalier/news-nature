@@ -201,6 +201,81 @@
       text-transform: uppercase;
     }
 
+    /* History view */
+    #history-view {
+      display: none;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .hist-issue {
+      margin-bottom: 40px;
+    }
+
+    .hist-issue-date {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #d8d4c4;
+      margin-bottom: 4px;
+    }
+
+    .hist-list {
+      list-style: none;
+    }
+
+    .hist-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ece9e0;
+    }
+
+    .hist-emoji {
+      font-size: 14px;
+      flex-shrink: 0;
+      line-height: 1.5;
+    }
+
+    .hist-title {
+      flex: 1;
+      font-size: 14px;
+      color: #1a1a1a;
+      line-height: 1.4;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .hist-link {
+      font-size: 11px;
+      color: #024873;
+      text-decoration: none;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+      opacity: 0.7;
+    }
+
+    .hist-link:hover { opacity: 1; }
+
+    .hist-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #bbb;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* History tab — aligned right */
+    .tab-history {
+      margin-left: auto;
+      border-left: 1px solid #d8d4c4;
+    }
+
     footer {
       text-align: center;
       padding: 28px 24px;
@@ -226,6 +301,7 @@
       <button class="tab active" data-filter="all">Toutes les régions</button>
       <button class="tab" data-filter="europe">Europe</button>
       <button class="tab" data-filter="world">Reste du monde</button>
+      <button class="tab tab-history" data-filter="history">Historique</button>
     </div>
   </div>
 
@@ -378,14 +454,65 @@
     <div class="empty-msg" id="empty-msg" style="display:none">Aucune actualité pour ce filtre.</div>
   </div>
 
+  <div id="history-view">
+    
+        <div class="hist-issue">
+          <div class="hist-issue-date">29 March 2026</div>
+          <ul class="hist-list">
+          <li class="hist-item">
+            <span class="hist-emoji">🦬</span>
+            <span class="hist-title">Le bisonte européen s'installe pour la première fois dans les hauts plateaux ibériques d'Espagne</span>
+            <a class="hist-link" href="https://rewildingeurope.com/news/european-bison-arrive-in-the-iberian-highlands-for-the-first-time/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🌳</span>
+            <span class="hist-title">La déforestation en Amazonie brésilienne au niveau le plus bas en 12 ans</span>
+            <a class="hist-link" href="https://news.mongabay.com/2026/02/amazon-deforestation-on-pace-to-be-the-lowest-on-record-says-brazil/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🌊</span>
+            <span class="hist-title">Le Traité sur la haute mer progresse : les premières zones marines protégées en haute mer se dessinent</span>
+            <a class="hist-link" href="https://www.pew.org/en/research-and-analysis/articles/2026/03/18/un-meeting-will-help-map-out-future-of-the-high-seas-treaty" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">☀️</span>
+            <span class="hist-title">L'éolien et le solaire dépassent les combustibles fossiles dans l'électricité européenne pour la première fois</span>
+            <a class="hist-link" href="https://ember-energy.org/latest-insights/european-electricity-review-2026/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🦅</span>
+            <span class="hist-title">Conférence mondiale sur les espèces migratrices à Campo Grande : protection renforcée pour des dizaines d'espèces</span>
+            <a class="hist-link" href="https://www.birdlife.org/news/2026/03/23/migratory-species-connect-our-world-now-we-must-act-to-protect-them/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🦜</span>
+            <span class="hist-title">Les projets de conservation des oiseaux en Namibie renforcent la résilience des communautés locales</span>
+            <a class="hist-link" href="https://news.mongabay.com/2026/03/how-namibias-bird-conservation-projects-build-community-resilience-commentary/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🦍</span>
+            <span class="hist-title">La Journée mondiale du rewilding célèbre le retour des gorilles dans le parc de Virunga</span>
+            <a class="hist-link" href="https://news.mongabay.com/short-article/2026/03/world-rewilding-day-hope-for-species-and-ecosystems/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🐒</span>
+            <span class="hist-title">Un nouveau cadre de cartographie révolutionne la protection de l'habitat pour les espèces menacées d'Asie</span>
+            <a class="hist-link" href="https://news.mongabay.com/2026/03/new-mapping-approach-predicts-habitat-availability-for-species-conservation/" target="_blank" rel="noopener">↗</a>
+          </li>
+          </ul>
+        </div>
+  </div>
+
   <footer>
-    8 victoires pour la nature · Mis à jour le 29/03/2026 à 14:17
+    8 victoires pour la nature · Mis à jour le 29/03/2026 à 14:25
   </footer>
 
   <script>
     const tabs = document.querySelectorAll('.tab');
     const cards = document.querySelectorAll('.card');
     const emptyMsg = document.getElementById('empty-msg');
+    const grid = document.getElementById('grid');
+    const historyView = document.getElementById('history-view');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -393,8 +520,17 @@
         tab.classList.add('active');
 
         const filter = tab.dataset.filter;
-        let visible = 0;
 
+        if (filter === 'history') {
+          grid.style.display = 'none';
+          historyView.style.display = 'block';
+          return;
+        }
+
+        grid.style.display = 'grid';
+        historyView.style.display = 'none';
+
+        let visible = 0;
         cards.forEach(card => {
           const region = card.dataset.region || '';
           const isEurope = region === 'Europe';

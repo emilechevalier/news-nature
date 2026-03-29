@@ -1,0 +1,88 @@
+[
+  {
+    "date": "2026-03-29",
+    "label": "29 March 2026",
+    "articles": [
+      {
+        "title": "Le bisonte européen s'installe pour la première fois dans les hauts plateaux ibériques d'Espagne",
+        "summary": "Neuf bisons européens ont été relâchés pour la première fois dans les Hautes Terres ibériques, dans la province de Guadalajara en Espagne, marquant une étape historique pour le rewilding en Europe méditerranéenne. Issus d'un domaine privé au nord-ouest de Madrid, ces animaux participent à un projet de recherche pionnier mené par Rewilding Spain pour explorer leur rôle dans la restauration des écosystèmes méditerranéens. En dix ans, la population totale de bisons européens dans le monde est passée de 2 500 à près de 9 000 individus. Ce retour du plus grand mammifère terrestre d'Europe dans une région dont il avait disparu depuis des siècles est une victoire symbolique majeure pour la conservation.",
+        "category": "wildlife",
+        "region": "Europe",
+        "win_type": "species_recovery",
+        "emoji": "🦬",
+        "date": "2026-03-20",
+        "source_url": "https://rewildingeurope.com/news/european-bison-arrive-in-the-iberian-highlands-for-the-first-time/"
+      },
+      {
+        "title": "La déforestation en Amazonie brésilienne au niveau le plus bas en 12 ans",
+        "summary": "Selon les données de l'Institut national brésilien de recherche spatiale (INPE), la déforestation en Amazonie entre août 2025 et janvier 2026 n'a atteint que 1 325 km², soit une baisse de 35 % par rapport à la même période l'année précédente. Si la tendance se maintient, 2026 enregistrerait le taux de déforestation le plus bas depuis 2014. La ministre de l'Environnement Marina Silva attribue ce résultat au renforcement des contrôles et à la coopération municipale. Le Brésil se prépare à accueillir la COP30 sur le climat, et cette trajectoire positive renforce son positionnement comme leader de la conservation forestière mondiale.",
+        "category": "forest",
+        "region": "Amériques",
+        "win_type": "policy_win",
+        "emoji": "🌳",
+        "date": "2026-03-05",
+        "source_url": "https://news.mongabay.com/2026/02/amazon-deforestation-on-pace-to-be-the-lowest-on-record-says-brazil/"
+      },
+      {
+        "title": "Le Traité sur la haute mer progresse : les premières zones marines protégées en haute mer se dessinent",
+        "summary": "La troisième réunion préparatoire du Traité sur la haute mer (PrepCom 3) a débuté le 23 mars 2026 à New York, réunissant les gouvernements pour définir les modalités concrètes de création des premières aires marines protégées en eaux internationales. Des coalitions se forment autour de sites prioritaires comme les dorsales Salas y Gómez et Nazca dans le Pacifique. Entré en vigueur en janvier 2026, ce traité historique offre pour la première fois un cadre juridique contraignant pour protéger la biodiversité dans les deux tiers des océans. Ces négociations concrétisent l'ambition de protéger 30 % des océans d'ici 2030.",
+        "category": "ocean",
+        "region": "Monde",
+        "win_type": "policy_win",
+        "emoji": "🌊",
+        "date": "2026-03-23",
+        "source_url": "https://www.pew.org/en/research-and-analysis/articles/2026/03/18/un-meeting-will-help-map-out-future-of-the-high-seas-treaty"
+      },
+      {
+        "title": "L'éolien et le solaire dépassent les combustibles fossiles dans l'électricité européenne pour la première fois",
+        "summary": "Selon le rapport European Electricity Review 2026 d'Ember publié en mars, le vent et le solaire ont fourni 30 % de l'électricité de l'UE en 2025, dépassant pour la première fois les combustibles fossiles (29 %). La production solaire européenne a atteint un record de 369 TWh, en hausse de 20 % sur un an, et représente désormais 13 % de la production totale. Dans 14 des 27 pays membres, les énergies renouvelables ont produit plus d'électricité que les fossiles sur l'ensemble de l'année. Cette transition énergétique historique renforce l'indépendance de l'Europe vis-à-vis des importations de gaz et réduit les émissions de CO₂.",
+        "category": "climate",
+        "region": "Europe",
+        "win_type": "renewable_energy",
+        "emoji": "☀️",
+        "date": "2026-03-01",
+        "source_url": "https://ember-energy.org/latest-insights/european-electricity-review-2026/"
+      },
+      {
+        "title": "Conférence mondiale sur les espèces migratrices à Campo Grande : protection renforcée pour des dizaines d'espèces",
+        "summary": "La 15e Conférence des Parties à la Convention sur les espèces migratrices (CMS COP15) s'est ouverte le 23 mars 2026 à Campo Grande, au Brésil, au seuil du Pantanal. Sous le thème « Connecter la nature pour soutenir la vie », les gouvernements débattent de nouvelles protections pour des espèces comme l'anguille européenne, le requin-taupe et le lynx eurasiatique. L'Union européenne a défendu des mesures contre la capture illégale d'oiseaux migrateurs et la lutte contre la pollution marine. Cette réunion doit fixer la feuille de route pour la mise en œuvre du Plan stratégique de Samarcande 2024-2032 pour les espèces migratrices.",
+        "category": "biodiversity",
+        "region": "Amériques",
+        "win_type": "policy_win",
+        "emoji": "🦅",
+        "date": "2026-03-23",
+        "source_url": "https://www.birdlife.org/news/2026/03/23/migratory-species-connect-our-world-now-we-must-act-to-protect-them/"
+      },
+      {
+        "title": "Les projets de conservation des oiseaux en Namibie renforcent la résilience des communautés locales",
+        "summary": "Une analyse publiée par Mongabay en mars 2026 révèle que les projets de conservation des oiseaux dans la région de Karas en Namibie génèrent des bénéfices sociaux inattendus, renforçant la cohésion familiale et l'émancipation des femmes et des jeunes. Ces initiatives communautaires démontrent qu'en protégeant les oiseaux, on construit simultanément des structures sociales plus résilientes face aux crises climatiques. Le modèle namibien est désormais étudié par BirdLife International comme exemple de conservation intégrée au développement communautaire. Cette approche holistique pourrait inspirer des programmes similaires dans d'autres régions d'Afrique australe.",
+        "category": "wildlife",
+        "region": "Afrique",
+        "win_type": "community_action",
+        "emoji": "🦜",
+        "date": "2026-03-18",
+        "source_url": "https://news.mongabay.com/2026/03/how-namibias-bird-conservation-projects-build-community-resilience-commentary/"
+      },
+      {
+        "title": "La Journée mondiale du rewilding célèbre le retour des gorilles dans le parc de Virunga",
+        "summary": "Pour la Journée mondiale du rewilding du 20 mars 2026, Mongabay a mis en lumière la réintroduction réussie de quatre gorilles femelles critiquement menacées dans le parc national des Virunga en République Démocratique du Congo. Ces animaux, sauvés du commerce illégal, ont été réhabilités et relâchés dans la nature où ils ont rejoint avec succès une population sauvage existante. Le programme de rewilding des Virunga démontre qu'une restauration écologique est possible même dans des zones de conflit. Cette réussite s'inscrit dans la tendance mondiale de Renaissance du rewilding, qui progresse sur six continents.",
+        "category": "wildlife",
+        "region": "Afrique",
+        "win_type": "species_recovery",
+        "emoji": "🦍",
+        "date": "2026-03-20",
+        "source_url": "https://news.mongabay.com/short-article/2026/03/world-rewilding-day-hope-for-species-and-ecosystems/"
+      },
+      {
+        "title": "Un nouveau cadre de cartographie révolutionne la protection de l'habitat pour les espèces menacées d'Asie",
+        "summary": "Une équipe internationale de chercheurs a présenté en mars 2026 une nouvelle approche de modélisation combinant des années de télédétection, des données de terrain et des avis d'experts pour prédire la disponibilité des habitats pour quatre espèces menacées clés d'Asie du Sud-Est, dont le gibbon huppé à joues jaunes du Nord au Cambodge. Cet outil innovant permet d'identifier précisément où des espèces menacées peuvent survivre et être restaurées, optimisant considérablement les investissements en conservation. Le projet soutient également le développement d'un écotourisme culturellement ancré dans les communautés locales du parc national de Veun Sai Siem Pang. Cette avancée scientifique pourrait transformer la planification de la conservation dans toute la région Mékong.",
+        "category": "biodiversity",
+        "region": "Asie",
+        "win_type": "scientific_discovery",
+        "emoji": "🐒",
+        "date": "2026-03-15",
+        "source_url": "https://news.mongabay.com/2026/03/new-mapping-approach-predicts-habitat-availability-for-species-conservation/"
+      }
+    ]
+  }
+]
