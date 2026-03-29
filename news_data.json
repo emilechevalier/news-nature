@@ -7,7 +7,12 @@
     "win_type": "species_recovery",
     "emoji": "🦬",
     "date": "2026-03-20",
-    "source_url": "https://rewildingeurope.com/news/european-bison-arrive-in-the-iberian-highlands-for-the-first-time/"
+    "source_url": "https://rewildingeurope.com/news/european-bison-arrive-in-the-iberian-highlands-for-the-first-time/",
+    "image_query": "european bison grassland",
+    "image_url": "https://images.unsplash.com/photo-1762096078807-bbdf9a1cc02b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxldXJvcGVhbiUyMGJpc29uJTIwZ3Jhc3NsYW5kfGVufDF8MHx8fDE3NzQ4MDQ4MjN8MA&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1762096078807-bbdf9a1cc02b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxldXJvcGVhbiUyMGJpc29uJTIwZ3Jhc3NsYW5kfGVufDF8MHx8fDE3NzQ4MDQ4MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Oskar Jabłoński",
+    "image_credit_url": "https://unsplash.com/@oj_wildframe"
   },
   {
     "title": "La déforestation en Amazonie brésilienne au niveau le plus bas en 12 ans",
@@ -17,7 +22,12 @@
     "win_type": "policy_win",
     "emoji": "🌳",
     "date": "2026-03-05",
-    "source_url": "https://news.mongabay.com/2026/02/amazon-deforestation-on-pace-to-be-the-lowest-on-record-says-brazil/"
+    "source_url": "https://news.mongabay.com/2026/02/amazon-deforestation-on-pace-to-be-the-lowest-on-record-says-brazil/",
+    "image_query": "amazon rainforest aerial green",
+    "image_url": "https://images.unsplash.com/photo-1763090738512-270137dbdda2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxhbWF6b24lMjByYWluZm9yZXN0JTIwYWVyaWFsJTIwZ3JlZW58ZW58MXwwfHx8MTc3NDgwNDgyNHww&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1763090738512-270137dbdda2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxhbWF6b24lMjByYWluZm9yZXN0JTIwYWVyaWFsJTIwZ3JlZW58ZW58MXwwfHx8MTc3NDgwNDgyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Jing Bo Wang",
+    "image_credit_url": "https://unsplash.com/@teresawang"
   },
   {
     "title": "Le Traité sur la haute mer progresse : les premières zones marines protégées en haute mer se dessinent",
@@ -27,7 +37,12 @@
     "win_type": "policy_win",
     "emoji": "🌊",
     "date": "2026-03-23",
-    "source_url": "https://www.pew.org/en/research-and-analysis/articles/2026/03/18/un-meeting-will-help-map-out-future-of-the-high-seas-treaty"
+    "source_url": "https://www.pew.org/en/research-and-analysis/articles/2026/03/18/un-meeting-will-help-map-out-future-of-the-high-seas-treaty",
+    "image_query": "ocean deep blue waves",
+    "image_url": "https://images.unsplash.com/photo-1772983937965-6439ed24e343?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxvY2VhbiUyMGRlZXAlMjBibHVlJTIwd2F2ZXN8ZW58MXwwfHx8MTc3NDgwNDgyNXww&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1772983937965-6439ed24e343?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxvY2VhbiUyMGRlZXAlMjBibHVlJTIwd2F2ZXN8ZW58MXwwfHx8MTc3NDgwNDgyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Jiaqi Zhang",
+    "image_credit_url": "https://unsplash.com/@jqzh"
   },
   {
     "title": "L'éolien et le solaire dépassent les combustibles fossiles dans l'électricité européenne pour la première fois",
@@ -37,7 +52,12 @@
     "win_type": "renewable_energy",
     "emoji": "☀️",
     "date": "2026-03-01",
-    "source_url": "https://ember-energy.org/latest-insights/european-electricity-review-2026/"
+    "source_url": "https://ember-energy.org/latest-insights/european-electricity-review-2026/",
+    "image_query": "wind turbines sunset europe",
+    "image_url": "https://images.unsplash.com/photo-1763913947623-0abd677b6423?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHx3aW5kJTIwdHVyYmluZXMlMjBzdW5zZXQlMjBldXJvcGV8ZW58MXwwfHx8MTc3NDgwNDgyNnww&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1763913947623-0abd677b6423?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHx3aW5kJTIwdHVyYmluZXMlMjBzdW5zZXQlMjBldXJvcGV8ZW58MXwwfHx8MTc3NDgwNDgyNnww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Julian Zwengel",
+    "image_credit_url": "https://unsplash.com/@juzwe"
   },
   {
     "title": "Conférence mondiale sur les espèces migratrices à Campo Grande : protection renforcée pour des dizaines d'espèces",
@@ -47,7 +67,12 @@
     "win_type": "policy_win",
     "emoji": "🦅",
     "date": "2026-03-23",
-    "source_url": "https://www.birdlife.org/news/2026/03/23/migratory-species-connect-our-world-now-we-must-act-to-protect-them/"
+    "source_url": "https://www.birdlife.org/news/2026/03/23/migratory-species-connect-our-world-now-we-must-act-to-protect-them/",
+    "image_query": "migratory birds flying formation",
+    "image_url": "https://images.unsplash.com/photo-1774435511810-d148228ee1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxtaWdyYXRvcnklMjBiaXJkcyUyMGZseWluZyUyMGZvcm1hdGlvbnxlbnwxfDB8fHwxNzc0ODA0ODI2fDA&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1774435511810-d148228ee1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxtaWdyYXRvcnklMjBiaXJkcyUyMGZseWluZyUyMGZvcm1hdGlvbnxlbnwxfDB8fHwxNzc0ODA0ODI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "David Billington",
+    "image_credit_url": "https://unsplash.com/@davelo"
   },
   {
     "title": "Les projets de conservation des oiseaux en Namibie renforcent la résilience des communautés locales",
@@ -57,7 +82,12 @@
     "win_type": "community_action",
     "emoji": "🦜",
     "date": "2026-03-18",
-    "source_url": "https://news.mongabay.com/2026/03/how-namibias-bird-conservation-projects-build-community-resilience-commentary/"
+    "source_url": "https://news.mongabay.com/2026/03/how-namibias-bird-conservation-projects-build-community-resilience-commentary/",
+    "image_query": "african birds savanna namibia",
+    "image_url": "https://images.unsplash.com/photo-1736149562066-eda7ea2fafe2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwYmlyZHMlMjBzYXZhbm5hJTIwbmFtaWJpYXxlbnwxfDB8fHwxNzc0ODA0ODI3fDA&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1736149562066-eda7ea2fafe2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwYmlyZHMlMjBzYXZhbm5hJTIwbmFtaWJpYXxlbnwxfDB8fHwxNzc0ODA0ODI3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Dimitar Meddling",
+    "image_credit_url": "https://unsplash.com/@dmeddling"
   },
   {
     "title": "La Journée mondiale du rewilding célèbre le retour des gorilles dans le parc de Virunga",
@@ -67,7 +97,12 @@
     "win_type": "species_recovery",
     "emoji": "🦍",
     "date": "2026-03-20",
-    "source_url": "https://news.mongabay.com/short-article/2026/03/world-rewilding-day-hope-for-species-and-ecosystems/"
+    "source_url": "https://news.mongabay.com/short-article/2026/03/world-rewilding-day-hope-for-species-and-ecosystems/",
+    "image_query": "gorilla forest africa",
+    "image_url": "https://images.unsplash.com/photo-1762358511314-ac38f03cffbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxnb3JpbGxhJTIwZm9yZXN0JTIwYWZyaWNhfGVufDF8MHx8fDE3NzQ4MDQ4Mjd8MA&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1762358511314-ac38f03cffbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxnb3JpbGxhJTIwZm9yZXN0JTIwYWZyaWNhfGVufDF8MHx8fDE3NzQ4MDQ4Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Emmy Shingiro",
+    "image_credit_url": "https://unsplash.com/@eshingiro"
   },
   {
     "title": "Un nouveau cadre de cartographie révolutionne la protection de l'habitat pour les espèces menacées d'Asie",
@@ -77,6 +112,11 @@
     "win_type": "scientific_discovery",
     "emoji": "🐒",
     "date": "2026-03-15",
-    "source_url": "https://news.mongabay.com/2026/03/new-mapping-approach-predicts-habitat-availability-for-species-conservation/"
+    "source_url": "https://news.mongabay.com/2026/03/new-mapping-approach-predicts-habitat-availability-for-species-conservation/",
+    "image_query": "cambodia tropical forest wildlife",
+    "image_url": "https://images.unsplash.com/photo-1701632773090-705090bf5e38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjYW1ib2RpYSUyMHRyb3BpY2FsJTIwZm9yZXN0JTIwd2lsZGxpZmV8ZW58MXwwfHx8MTc3NDgwNDg1Nnww&ixlib=rb-4.1.0&q=80&w=400",
+    "image_url_large": "https://images.unsplash.com/photo-1701632773090-705090bf5e38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjYW1ib2RpYSUyMHRyb3BpY2FsJTIwZm9yZXN0JTIwd2lsZGxpZmV8ZW58MXwwfHx8MTc3NDgwNDg1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_credit": "Robin Canfield",
+    "image_credit_url": "https://unsplash.com/@robincanfield"
   }
 ]
