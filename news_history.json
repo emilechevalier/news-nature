@@ -1,7 +1,7 @@
 [
   {
     "date": "2026-03-29",
-    "label": "29 March 2026",
+    "label": "29 mars 2026",
     "articles": [
       {
         "title": "Le bisonte européen s'installe pour la première fois dans les hauts plateaux ibériques d'Espagne",
@@ -82,6 +82,161 @@
         "emoji": "🐒",
         "date": "2026-03-15",
         "source_url": "https://news.mongabay.com/2026/03/new-mapping-approach-predicts-habitat-availability-for-species-conservation/"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-24",
+    "label": "24 mars 2026",
+    "articles": [
+      {
+        "title": "Les rhinocéros reviennent au parc national de Kidepo en Ouganda après 43 ans d'absence",
+        "summary": "Le 17 mars 2026, deux rhinocéros blancs du sud ont été réintroduits dans le parc national de Kidepo Valley en Ouganda, où l'espèce avait disparu en 1983 à cause du braconnage. C'est la première étape d'une réintroduction prévue de huit individus, avec des infrastructures complètes (clôtures, rangers, systèmes de monitoring) pour sécuriser leur retour. Ce retour marque une victoire majeure pour la conservation de l'Afrique de l'Est et ouvre la voie à l'introduction future de rhinocéros noirs de l'Est.",
+        "category": "wildlife",
+        "region": "Afrique",
+        "win_type": "species_recovery",
+        "emoji": "🦏",
+        "date": "2026-03-20",
+        "source_url": "https://ugandawildlife.org/news/uganda-begins-historic-return-of-rhinos-to-kidepo-valley-national-park/"
+      },
+      {
+        "title": "La population de papillons monarques bondit de 64 % au Mexique",
+        "summary": "Le rapport annuel de WWF-Mexique publié le 17 mars 2026 révèle que les monarques occupent désormais 2,93 hectares de forêt au cœur de la Réserve de biosphère, contre 1,79 hectare l'hiver précédent. C'est la plus grande superficie documentée depuis 2018 et la plus forte reprise de la décennie pour ces papillons emblématiques. Cette augmentation est attribuée aux efforts combinés de protection de l'habitat et de lutte contre l'exploitation forestière illégale.",
+        "category": "wildlife",
+        "region": "Amériques",
+        "win_type": "species_recovery",
+        "emoji": "🦋",
+        "date": "2026-03-17",
+        "source_url": "https://www.worldwildlife.org/news/stories/monarch-butterfly-population-increases-64-percent/"
+      },
+      {
+        "title": "La restauration des zones humides du delta du Danube en Ukraine montre une renaissance spectaculaire",
+        "summary": "Un projet pluriannuel de restauration dans le delta du Danube en Ukraine a reconnecté le lac Kartal au fleuve Danube, revitalisant plus de 18 000 hectares de zones humides après des décennies de déclin. La phase finale, achevée début 2026, a augmenté le débit d'eau vers le lac de 40 %, permettant un retour rapide de l'écosystème. Ce projet démontre que la nature peut se régénérer même en temps de guerre.",
+        "category": "restoration",
+        "region": "Europe",
+        "win_type": "habitat_protection",
+        "emoji": "🌿",
+        "date": "2026-03-20",
+        "source_url": "https://rewildingeurope.com/news/new-documentary-reveals-the-healing-power-of-rewilding-in-ukraines-danube-delta/"
+      },
+      {
+        "title": "Dix pays européens s'engagent pour 100 GW d'éolien offshore en mer du Nord",
+        "summary": "La Déclaration de Hambourg engage la Belgique, le Danemark, la France, l'Allemagne, l'Islande, l'Irlande, le Luxembourg, les Pays-Bas, la Norvège et le Royaume-Uni à développer conjointement jusqu'à 100 GW de projets éoliens offshore interconnectés d'ici 2050. Cette capacité serait suffisante pour alimenter 143 millions de foyers en électricité verte. L'approche mutualisée réduit également l'impact environnemental en limitant les infrastructures sous-marines nécessaires.",
+        "category": "climate",
+        "region": "Europe",
+        "win_type": "renewable_energy",
+        "emoji": "💨",
+        "date": "2026-01-26",
+        "source_url": "https://www.offshorewind.biz/2026/01/26/hamburg-declaration-north-sea-countries-target-100-gw-of-cross-border-offshore-wind-boost-to-offshore-hydrogen/"
+      },
+      {
+        "title": "Le Traité sur la haute mer entre en vigueur : une révolution pour la protection des océans",
+        "summary": "Le 17 janvier 2026, l'Accord sur la biodiversité au-delà des juridictions nationales (BBNJ) est officiellement entré en vigueur après avoir atteint 60 ratifications. Pour la première fois, les gouvernements disposent d'un cadre juridique contraignant pour créer des sanctuaires marins dans les eaux internationales, couvrant potentiellement plus d'un tiers des océans mondiaux. Ce traité représente la plus grande avancée pour la protection des océans de l'histoire.",
+        "category": "ocean",
+        "region": "Monde",
+        "win_type": "policy_win",
+        "emoji": "🌊",
+        "date": "2026-01-17",
+        "source_url": "https://oceans-and-fisheries.ec.europa.eu/news/high-seas-treaty-enters-force-milestone-ocean-conservation-2026-01-16_en"
+      },
+      {
+        "title": "La restauration de la forêt atlantique du Brésil relancée grâce aux plantes natives à valeur commerciale",
+        "summary": "Une étude de Mongabay révèle que près de 60 % des espèces végétales natives des zones de restauration de la forêt atlantique brésilienne ont un potentiel économique dans les secteurs médical, cosmétique et alimentaire. Des projets ont déjà généré plus de 1,2 million de réaux en valeur économique locale tout en restaurant l'écosystème. Ce modèle économique innovant pourrait être la clé pour restaurer une forêt qui n'a conservé que 24 % de sa couverture originelle.",
+        "category": "forest",
+        "region": "Amériques",
+        "win_type": "community_action",
+        "emoji": "🌳",
+        "date": "2026-03-07",
+        "source_url": "https://news.mongabay.com/2026/03/restoration-of-brazils-atlantic-forest-may-hinge-on-market-for-native-plants/"
+      },
+      {
+        "title": "Le réseau européen de rewilding s'étend à la Turquie et à la Grèce",
+        "summary": "Le Réseau européen de rewilding accueille deux nouveaux membres issus de Turquie et de Grèce, renforçant la collaboration pour la restauration de la nature à travers les écosystèmes terrestres et marins méditerranéens. Cette expansion s'inscrit dans la dynamique de la Journée mondiale du rewilding du 20 mars 2026. Au cours des dix dernières années, le nombre de bisons européens sauvages a progressé de 2 500 à 7 000 individus grâce à ces efforts collectifs.",
+        "category": "biodiversity",
+        "region": "Europe",
+        "win_type": "habitat_protection",
+        "emoji": "🦬",
+        "date": "2026-03-20",
+        "source_url": "https://rewildingeurope.com/news/the-european-rewilding-network-expands-into-turkiye-and-greece/"
+      },
+      {
+        "title": "Les champignons mycorhiziens reconnus comme héros climatiques par le Prix Tyler 2026",
+        "summary": "La biologiste évolutive Dr Toby Kiers a remporté le Prix Tyler 2026 pour l'environnement pour ses travaux révolutionnaires sur les champignons mycorhiziens qui séquestrent du carbone à grande échelle dans les sols. Ses recherches ont montré que ces réseaux fongiques souterrains jouent un rôle crucial et sous-estimé dans la lutte contre le changement climatique. Cette reconnaissance scientifique pourrait redéfinir les stratégies mondiales de séquestration du carbone.",
+        "category": "climate",
+        "region": "Monde",
+        "win_type": "scientific_discovery",
+        "emoji": "🍄",
+        "date": "2026-03-12",
+        "source_url": "https://www.euronews.com/2026/03/12/carbon-sucking-fungi-and-forever-chemical-crackdowns-positive-environmental-stories-from-2"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-23",
+    "label": "23 mars 2026",
+    "articles": [
+      {
+        "title": "Journée mondiale du rewilding : les grands mammifères font leur retour en Europe",
+        "summary": "Le 20 mars 2026, la Journée mondiale du rewilding célèbre des succès concrets. Le bison d'Europe a atteint 7 000 individus sauvages, contre seulement 2 500 il y a dix ans. En Roumanie, les premiers vautours fauves seront relâchés dans les Carpates méridionales après 50 ans d'absence. Rewilding Europe recense le retour des loups, lynx, bisons et castors dans de nombreuses régions, portant l'espoir d'une Europe à nouveau sauvage.",
+        "category": "Rewilding",
+        "region": "Europe",
+        "win_type": "Rebond de population",
+        "emoji": "🦬",
+        "date": "Mars 2026"
+      },
+      {
+        "title": "Jersey quadruple sa zone marine protégée — un record pour les îles britanniques",
+        "summary": "Le 12 mars 2026, Jersey a approuvé l'un des plans de protection marine les plus ambitieux des îles britanniques, quasi quadruplant la superficie de ses mers protégées contre la pêche destructrice. En parallèle, cinq ans après l'interdiction du chalutage sur les fonds du Sussex (Angleterre), les écosystèmes marins montrent de premiers signes de régénération : retour des bancs de moules et des populations de poissons.",
+        "category": "Océan",
+        "region": "Europe",
+        "win_type": "Nouvelle protection",
+        "emoji": "🐟",
+        "date": "Mars 2026"
+      },
+      {
+        "title": "Virunga 2026 : sept gorillons nés dont des jumeaux, couronnant une réintroduction historique",
+        "summary": "Depuis janvier 2026, sept gorillons ont vu le jour à Virunga, dont une paire de jumeaux — événement rarissime. Ces naissances confirment le succès de la réintroduction de quatre femelles gorilles des plaines orientales, arrachées au trafic illicite et relâchées en 2024. La population du mont Tshiaberimu est passée de 8 à 12 individus, avec de nouveaux accouplements observés entre les femelles et le mâle dominant.",
+        "category": "Faune",
+        "region": "Afrique",
+        "win_type": "Retour d'espèce",
+        "emoji": "🦍",
+        "date": "Janvier 2026"
+      },
+      {
+        "title": "Inde : 53 guépards dont 33 nés sur le sol indien, le Project Cheetah dépasse les espoirs",
+        "summary": "Le Programme guépard indien annonce en mars 2026 une population de 53 individus, dont 33 nés en Inde — signe fort d'adaptation au milieu local. La femelle Gamini vient d'avoir trois nouveaux petits au parc national de Kuno (Madhya Pradesh). Éteints sur le sous-continent depuis 1952, les guépards indiens pourraient former une métapopulation viable de 60 à 70 individus d'ici 2032.",
+        "category": "Faune",
+        "region": "Asie",
+        "win_type": "Rebond de population",
+        "emoji": "🐆",
+        "date": "Mars 2026"
+      },
+      {
+        "title": "Brésil : des singes hurleurs vaccinés contre la fièvre jaune retrouvent la forêt Atlantique",
+        "summary": "Dans la forêt de Tijuca (Rio de Janeiro), des équipes de conservation ont réintroduit des singes hurleurs bruns vaccinés contre la fièvre jaune, qui avait décimé 90 % de la population locale. C'est la première fois au monde qu'un programme de rewilding intègre la vaccination d'une espèce sauvage à grande échelle. Porté par des agences gouvernementales brésiliennes, le programme s'étend désormais à plusieurs États de la forêt Atlantique.",
+        "category": "Rewilding",
+        "region": "Amériques",
+        "win_type": "Retour d'espèce",
+        "emoji": "🐒",
+        "date": "2025"
+      },
+      {
+        "title": "Indonésie : 32 dugongs observés ensemble dans les Moluques — un record mondial",
+        "summary": "Une équipe WWF en mission dans les Moluques du Sud-Ouest a photographié jusqu'à 32 dugongs rassemblés en un seul endroit, une observation exceptionnellement rare à l'échelle mondiale. Ce rassemblement témoigne d'herbiers denses et en bonne santé, fruit de dix ans de coopération entre communautés locales et organisations de conservation. Les dugongs, mammifères marins vulnérables, dépendent entièrement de ces prairies sous-marines pour leur alimentation.",
+        "category": "Océan",
+        "region": "Asie",
+        "win_type": "Rebond de population",
+        "emoji": "🐬",
+        "date": "Février 2026"
+      },
+      {
+        "title": "Mission Nature 2026 : la France investit dans la restauration concrète des écosystèmes",
+        "summary": "L'Office français de la biodiversité lance un nouvel appel à projets Mission Nature 2026, dédié à la restauration écologique sur le terrain. Depuis 2023, 64 sites ont déjà bénéficié du programme, qui finance des actions concrètes — renaturation de cours d'eau, restauration de prairies et zones humides, reconnexion d'habitats fragmentés. Ce nouvel appel s'inscrit dans la mise en œuvre de la Loi européenne de restauration de la nature.",
+        "category": "Politique",
+        "region": "Europe",
+        "win_type": "Politique de conservation",
+        "emoji": "🌿",
+        "date": "Mars 2026"
       }
     ]
   }

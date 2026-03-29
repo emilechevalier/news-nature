@@ -267,10 +267,64 @@ def build_web_page(news, history=None):
     if history is None:
         history = []
 
+    # Stats
+    edition_num  = len(history)
+    species_back = sum(1 for a in news if a.get("win_type") in [
+        "species_recovery", "Retour d'espèce", "Rebond de population"])
+    policy_wins  = sum(1 for a in news if a.get("win_type") in [
+        "policy_win", "Nouvelle protection", "habitat_protection"])
+    n_regions    = len(set(
+        a.get("region", "") for a in news
+        if a.get("region") and a.get("region") not in ("Monde", "")
+    ))
+
+    stats_parts = [f"Édition n°{edition_num}", f"{len(news)} victoires cette semaine"]
+    if species_back:
+        stats_parts.append(f"{species_back} retour{'s' if species_back > 1 else ''} d'espèces")
+    if policy_wins:
+        stats_parts.append(f"{policy_wins} protection{'s' if policy_wins > 1 else ''}")
+    stats_parts.append(f"{n_regions} régions couvertes")
+    stats_html = ' <span class="stats-sep">·</span> '.join(
+        f'<span>{p}</span>' for p in stats_parts)
+
+    # Featured article (first) + grid articles (rest)
+    featured  = news[0] if news else None
+    grid_news = news[1:] if len(news) > 1 else []
+
+    featured_html = ""
+    if featured:
+        fw   = featured.get("win_type", "species_recovery")
+        fc   = WIN_COLOR.get(fw, WIN_DEFAULT_COLOR)
+        fsrc = featured.get("source_url") or featured.get("url", "")
+        fsrc_html = (
+            f'<a class="source-link" href="{fsrc}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
+        ) if fsrc else ""
+        featured_html = f"""
+  <div class="featured-wrapper">
+    <div class="featured-label">✦ Article phare de la semaine</div>
+    <div class="featured-card" style="border-top:4px solid {fc}">
+      <div class="featured-emoji-wrap">{featured.get("emoji","🌿")}</div>
+      <div class="featured-content">
+        <div class="card-tags" style="margin-bottom:12px">
+          <span class="tag-cat" style="color:{fc}">{featured.get("category","").upper()}</span>
+          <span class="tag-sep">·</span>
+          <span class="tag-reg">{featured.get("region","").upper()}</span>
+        </div>
+        <h2 class="featured-title">{featured.get("title","")}</h2>
+        <p class="featured-summary">{featured.get("summary","")}</p>
+        <div class="card-footer">
+          <span class="card-date">{featured.get("date","")}</span>
+          {fsrc_html}
+        </div>
+      </div>
+    </div>
+  </div>"""
+
+    # Grid cards (remaining articles)
     cards_html = ""
-    for item in news:
-        win   = item.get("win_type", "species_recovery")
-        color = WIN_COLOR.get(win, WIN_DEFAULT_COLOR)
+    for item in grid_news:
+        win    = item.get("win_type", "species_recovery")
+        color  = WIN_COLOR.get(win, WIN_DEFAULT_COLOR)
         source = item.get("source_url") or item.get("url", "")
         source_html = (
             f'<a class="source-link" href="{source}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
@@ -295,12 +349,11 @@ def build_web_page(news, history=None):
           </div>
         </div>"""
 
-    # Build history HTML — compact list grouped by issue
+    # History HTML — compact list grouped by issue
     history_html = ""
     for issue in history:
-        issue_articles = issue.get("articles", [])
         rows = ""
-        for a in issue_articles:
+        for a in issue.get("articles", []):
             src = a.get("source_url") or a.get("url", "")
             src_html = f'<a class="hist-link" href="{src}" target="_blank" rel="noopener">↗</a>' if src else ""
             rows += f"""
@@ -338,7 +391,7 @@ def build_web_page(news, history=None):
     header {{
       background: #fdfcf3;
       border-bottom: 1px solid #d8d4c4;
-      padding: 52px 24px 40px;
+      padding: 52px 24px 36px;
       text-align: center;
     }}
 
@@ -357,7 +410,7 @@ def build_web_page(news, history=None):
       color: #1a1a1a;
       letter-spacing: -2px;
       line-height: 1.05;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }}
 
     .header-date {{
@@ -368,6 +421,24 @@ def build_web_page(news, history=None):
       font-family: 'Helvetica Neue', Arial, sans-serif;
     }}
 
+    /* Stats bar */
+    .stats-bar {{
+      background: #fdfcf3;
+      border-bottom: 1px solid #d8d4c4;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }}
+
+    .stats-sep {{ color: #d8d4c4; }}
+
     /* Tabs */
     .tabs-wrapper {{
       background: #fdfcf3;
@@ -376,7 +447,6 @@ def build_web_page(news, history=None):
 
     .tabs {{
       display: flex;
-      justify-content: center;
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
@@ -404,11 +474,72 @@ def build_web_page(news, history=None):
       border-bottom-color: #024873;
     }}
 
+    .tab-history {{
+      margin-left: auto;
+      border-left: 1px solid #d8d4c4;
+    }}
+
+    /* Featured article */
+    .featured-wrapper {{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 0;
+    }}
+
+    .featured-label {{
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-bottom: 12px;
+    }}
+
+    .featured-card {{
+      background: #ffffff;
+      border: 1px solid #e0ddd4;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      padding: 32px;
+    }}
+
+    .featured-emoji-wrap {{
+      font-size: 52px;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 4px;
+    }}
+
+    .featured-content {{ flex: 1; min-width: 0; }}
+
+    .featured-title {{
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }}
+
+    .featured-summary {{
+      font-size: 14px;
+      color: #444;
+      line-height: 1.72;
+      margin-bottom: 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }}
+
+    @media (max-width: 600px) {{
+      .featured-card {{ flex-direction: column; gap: 16px; padding: 20px; }}
+      .featured-emoji-wrap {{ font-size: 36px; }}
+    }}
+
     /* Grid */
     #grid {{
       max-width: 1100px;
       margin: 0 auto;
-      padding: 36px 20px 60px;
+      padding: 24px 20px 60px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
@@ -529,9 +660,7 @@ def build_web_page(news, history=None):
       padding: 40px 20px 60px;
     }}
 
-    .hist-issue {{
-      margin-bottom: 40px;
-    }}
+    .hist-issue {{ margin-bottom: 40px; }}
 
     .hist-issue-date {{
       font-size: 10px;
@@ -544,9 +673,7 @@ def build_web_page(news, history=None):
       margin-bottom: 4px;
     }}
 
-    .hist-list {{
-      list-style: none;
-    }}
+    .hist-list {{ list-style: none; }}
 
     .hist-item {{
       display: flex;
@@ -556,11 +683,7 @@ def build_web_page(news, history=None):
       border-bottom: 1px solid #ece9e0;
     }}
 
-    .hist-emoji {{
-      font-size: 14px;
-      flex-shrink: 0;
-      line-height: 1.5;
-    }}
+    .hist-emoji {{ font-size: 14px; flex-shrink: 0; line-height: 1.5; }}
 
     .hist-title {{
       flex: 1;
@@ -575,8 +698,7 @@ def build_web_page(news, history=None):
       color: #024873;
       text-decoration: none;
       flex-shrink: 0;
-      letter-spacing: 0.5px;
-      opacity: 0.7;
+      opacity: 0.6;
     }}
 
     .hist-link:hover {{ opacity: 1; }}
@@ -588,12 +710,6 @@ def build_web_page(news, history=None):
       font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 12px;
       letter-spacing: 1px;
-    }}
-
-    /* History tab — aligned right */
-    .tab-history {{
-      margin-left: auto;
-      border-left: 1px solid #d8d4c4;
     }}
 
     footer {{
@@ -616,6 +732,10 @@ def build_web_page(news, history=None):
     <div class="header-date">Semaine du {date_str}</div>
   </header>
 
+  <div class="stats-bar">
+    {stats_html}
+  </div>
+
   <div class="tabs-wrapper">
     <div class="tabs">
       <button class="tab active" data-filter="all">Toutes les régions</button>
@@ -624,6 +744,8 @@ def build_web_page(news, history=None):
       <button class="tab tab-history" data-filter="history">Historique</button>
     </div>
   </div>
+
+  {featured_html}
 
   <div id="grid">
     {cards_html}
@@ -635,15 +757,16 @@ def build_web_page(news, history=None):
   </div>
 
   <footer>
-    {len(news)} victoires pour la nature · Mis à jour le {updated}
+    Mis à jour le {updated}
   </footer>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const cards = document.querySelectorAll('.card');
-    const emptyMsg = document.getElementById('empty-msg');
-    const grid = document.getElementById('grid');
-    const historyView = document.getElementById('history-view');
+    const tabs      = document.querySelectorAll('.tab');
+    const cards     = document.querySelectorAll('.card');
+    const emptyMsg  = document.getElementById('empty-msg');
+    const grid      = document.getElementById('grid');
+    const featWrap  = document.querySelector('.featured-wrapper');
+    const histView  = document.getElementById('history-view');
 
     tabs.forEach(tab => {{
       tab.addEventListener('click', () => {{
@@ -653,22 +776,23 @@ def build_web_page(news, history=None):
         const filter = tab.dataset.filter;
 
         if (filter === 'history') {{
+          if (featWrap) featWrap.style.display = 'none';
           grid.style.display = 'none';
-          historyView.style.display = 'block';
+          histView.style.display = 'block';
           return;
         }}
 
+        if (featWrap) featWrap.style.display = '';
         grid.style.display = 'grid';
-        historyView.style.display = 'none';
+        histView.style.display = 'none';
 
         let visible = 0;
         cards.forEach(card => {{
-          const region = card.dataset.region || '';
+          const region   = card.dataset.region || '';
           const isEurope = region === 'Europe';
           const show = filter === 'all'
             || (filter === 'europe' && isEurope)
             || (filter === 'world'  && !isEurope);
-
           card.classList.toggle('hidden', !show);
           if (show) visible++;
         }});
@@ -701,7 +825,7 @@ def publish_to_github(news):
     date_str = datetime.now().strftime("%d %B %Y")
     env = {k: v for k, v in os.environ.items()}
     cmds = [
-        ["git", "add", "index.html", "news_history.json"],
+        ["git", "add", "index.html", "news_data.json", "news_history.json"],
         ["git", "commit", "-m", f"news: {date_str}"],
         ["git", "push", "origin", "main"],
     ]

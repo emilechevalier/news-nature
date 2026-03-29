@@ -18,7 +18,7 @@
     header {
       background: #fdfcf3;
       border-bottom: 1px solid #d8d4c4;
-      padding: 52px 24px 40px;
+      padding: 52px 24px 36px;
       text-align: center;
     }
 
@@ -37,7 +37,7 @@
       color: #1a1a1a;
       letter-spacing: -2px;
       line-height: 1.05;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .header-date {
@@ -48,6 +48,24 @@
       font-family: 'Helvetica Neue', Arial, sans-serif;
     }
 
+    /* Stats bar */
+    .stats-bar {
+      background: #fdfcf3;
+      border-bottom: 1px solid #d8d4c4;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .stats-sep { color: #d8d4c4; }
+
     /* Tabs */
     .tabs-wrapper {
       background: #fdfcf3;
@@ -56,7 +74,6 @@
 
     .tabs {
       display: flex;
-      justify-content: center;
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
@@ -84,11 +101,72 @@
       border-bottom-color: #024873;
     }
 
+    .tab-history {
+      margin-left: auto;
+      border-left: 1px solid #d8d4c4;
+    }
+
+    /* Featured article */
+    .featured-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 0;
+    }
+
+    .featured-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .featured-card {
+      background: #ffffff;
+      border: 1px solid #e0ddd4;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      padding: 32px;
+    }
+
+    .featured-emoji-wrap {
+      font-size: 52px;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+
+    .featured-content { flex: 1; min-width: 0; }
+
+    .featured-title {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+
+    .featured-summary {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.72;
+      margin-bottom: 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      .featured-card { flex-direction: column; gap: 16px; padding: 20px; }
+      .featured-emoji-wrap { font-size: 36px; }
+    }
+
     /* Grid */
     #grid {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 36px 20px 60px;
+      padding: 24px 20px 60px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
@@ -209,9 +287,7 @@
       padding: 40px 20px 60px;
     }
 
-    .hist-issue {
-      margin-bottom: 40px;
-    }
+    .hist-issue { margin-bottom: 40px; }
 
     .hist-issue-date {
       font-size: 10px;
@@ -224,9 +300,7 @@
       margin-bottom: 4px;
     }
 
-    .hist-list {
-      list-style: none;
-    }
+    .hist-list { list-style: none; }
 
     .hist-item {
       display: flex;
@@ -236,11 +310,7 @@
       border-bottom: 1px solid #ece9e0;
     }
 
-    .hist-emoji {
-      font-size: 14px;
-      flex-shrink: 0;
-      line-height: 1.5;
-    }
+    .hist-emoji { font-size: 14px; flex-shrink: 0; line-height: 1.5; }
 
     .hist-title {
       flex: 1;
@@ -255,8 +325,7 @@
       color: #024873;
       text-decoration: none;
       flex-shrink: 0;
-      letter-spacing: 0.5px;
-      opacity: 0.7;
+      opacity: 0.6;
     }
 
     .hist-link:hover { opacity: 1; }
@@ -268,12 +337,6 @@
       font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 12px;
       letter-spacing: 1px;
-    }
-
-    /* History tab — aligned right */
-    .tab-history {
-      margin-left: auto;
-      border-left: 1px solid #d8d4c4;
     }
 
     footer {
@@ -296,6 +359,10 @@
     <div class="header-date">Semaine du Sunday 29 March 2026</div>
   </header>
 
+  <div class="stats-bar">
+    <span>Édition n°3</span> <span class="stats-sep">·</span> <span>8 victoires cette semaine</span> <span class="stats-sep">·</span> <span>2 retours d'espèces</span> <span class="stats-sep">·</span> <span>3 protections</span> <span class="stats-sep">·</span> <span>4 régions couvertes</span>
+  </div>
+
   <div class="tabs-wrapper">
     <div class="tabs">
       <button class="tab active" data-filter="all">Toutes les régions</button>
@@ -305,26 +372,29 @@
     </div>
   </div>
 
+  
+  <div class="featured-wrapper">
+    <div class="featured-label">✦ Article phare de la semaine</div>
+    <div class="featured-card" style="border-top:4px solid #2d6a4f">
+      <div class="featured-emoji-wrap">🦬</div>
+      <div class="featured-content">
+        <div class="card-tags" style="margin-bottom:12px">
+          <span class="tag-cat" style="color:#2d6a4f">WILDLIFE</span>
+          <span class="tag-sep">·</span>
+          <span class="tag-reg">EUROPE</span>
+        </div>
+        <h2 class="featured-title">Le bisonte européen s'installe pour la première fois dans les hauts plateaux ibériques d'Espagne</h2>
+        <p class="featured-summary">Neuf bisons européens ont été relâchés pour la première fois dans les Hautes Terres ibériques, dans la province de Guadalajara en Espagne, marquant une étape historique pour le rewilding en Europe méditerranéenne. Issus d'un domaine privé au nord-ouest de Madrid, ces animaux participent à un projet de recherche pionnier mené par Rewilding Spain pour explorer leur rôle dans la restauration des écosystèmes méditerranéens. En dix ans, la population totale de bisons européens dans le monde est passée de 2 500 à près de 9 000 individus. Ce retour du plus grand mammifère terrestre d'Europe dans une région dont il avait disparu depuis des siècles est une victoire symbolique majeure pour la conservation.</p>
+        <div class="card-footer">
+          <span class="card-date">2026-03-20</span>
+          <a class="source-link" href="https://rewildingeurope.com/news/european-bison-arrive-in-the-iberian-highlands-for-the-first-time/" target="_blank" rel="noopener">Lire l'article ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="grid">
     
-        <div class="card" data-region="Europe" style="border-top:3px solid #2d6a4f">
-          <div class="card-body">
-            <div class="card-meta">
-              <div class="card-tags">
-                <span class="tag-cat" style="color:#2d6a4f">WILDLIFE</span>
-                <span class="tag-sep">·</span>
-                <span class="tag-reg">EUROPE</span>
-              </div>
-              <span class="card-emoji">🦬</span>
-            </div>
-            <h2 class="card-title">Le bisonte européen s'installe pour la première fois dans les hauts plateaux ibériques d'Espagne</h2>
-            <p class="card-summary">Neuf bisons européens ont été relâchés pour la première fois dans les Hautes Terres ibériques, dans la province de Guadalajara en Espagne, marquant une étape historique pour le rewilding en Europe méditerranéenne. Issus d'un domaine privé au nord-ouest de Madrid, ces animaux participent à un projet de recherche pionnier mené par Rewilding Spain pour explorer leur rôle dans la restauration des écosystèmes méditerranéens. En dix ans, la population totale de bisons européens dans le monde est passée de 2 500 à près de 9 000 individus. Ce retour du plus grand mammifère terrestre d'Europe dans une région dont il avait disparu depuis des siècles est une victoire symbolique majeure pour la conservation.</p>
-            <div class="card-footer">
-              <span class="card-date">2026-03-20</span>
-              <a class="source-link" href="https://rewildingeurope.com/news/european-bison-arrive-in-the-iberian-highlands-for-the-first-time/" target="_blank" rel="noopener">Lire l'article ↗</a>
-            </div>
-          </div>
-        </div>
         <div class="card" data-region="Amériques" style="border-top:3px solid #024873">
           <div class="card-body">
             <div class="card-meta">
@@ -457,7 +527,7 @@
   <div id="history-view">
     
         <div class="hist-issue">
-          <div class="hist-issue-date">29 March 2026</div>
+          <div class="hist-issue-date">29 mars 2026</div>
           <ul class="hist-list">
           <li class="hist-item">
             <span class="hist-emoji">🦬</span>
@@ -501,18 +571,104 @@
           </li>
           </ul>
         </div>
+        <div class="hist-issue">
+          <div class="hist-issue-date">24 mars 2026</div>
+          <ul class="hist-list">
+          <li class="hist-item">
+            <span class="hist-emoji">🦏</span>
+            <span class="hist-title">Les rhinocéros reviennent au parc national de Kidepo en Ouganda après 43 ans d'absence</span>
+            <a class="hist-link" href="https://ugandawildlife.org/news/uganda-begins-historic-return-of-rhinos-to-kidepo-valley-national-park/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🦋</span>
+            <span class="hist-title">La population de papillons monarques bondit de 64 % au Mexique</span>
+            <a class="hist-link" href="https://www.worldwildlife.org/news/stories/monarch-butterfly-population-increases-64-percent/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🌿</span>
+            <span class="hist-title">La restauration des zones humides du delta du Danube en Ukraine montre une renaissance spectaculaire</span>
+            <a class="hist-link" href="https://rewildingeurope.com/news/new-documentary-reveals-the-healing-power-of-rewilding-in-ukraines-danube-delta/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">💨</span>
+            <span class="hist-title">Dix pays européens s'engagent pour 100 GW d'éolien offshore en mer du Nord</span>
+            <a class="hist-link" href="https://www.offshorewind.biz/2026/01/26/hamburg-declaration-north-sea-countries-target-100-gw-of-cross-border-offshore-wind-boost-to-offshore-hydrogen/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🌊</span>
+            <span class="hist-title">Le Traité sur la haute mer entre en vigueur : une révolution pour la protection des océans</span>
+            <a class="hist-link" href="https://oceans-and-fisheries.ec.europa.eu/news/high-seas-treaty-enters-force-milestone-ocean-conservation-2026-01-16_en" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🌳</span>
+            <span class="hist-title">La restauration de la forêt atlantique du Brésil relancée grâce aux plantes natives à valeur commerciale</span>
+            <a class="hist-link" href="https://news.mongabay.com/2026/03/restoration-of-brazils-atlantic-forest-may-hinge-on-market-for-native-plants/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🦬</span>
+            <span class="hist-title">Le réseau européen de rewilding s'étend à la Turquie et à la Grèce</span>
+            <a class="hist-link" href="https://rewildingeurope.com/news/the-european-rewilding-network-expands-into-turkiye-and-greece/" target="_blank" rel="noopener">↗</a>
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🍄</span>
+            <span class="hist-title">Les champignons mycorhiziens reconnus comme héros climatiques par le Prix Tyler 2026</span>
+            <a class="hist-link" href="https://www.euronews.com/2026/03/12/carbon-sucking-fungi-and-forever-chemical-crackdowns-positive-environmental-stories-from-2" target="_blank" rel="noopener">↗</a>
+          </li>
+          </ul>
+        </div>
+        <div class="hist-issue">
+          <div class="hist-issue-date">23 mars 2026</div>
+          <ul class="hist-list">
+          <li class="hist-item">
+            <span class="hist-emoji">🦬</span>
+            <span class="hist-title">Journée mondiale du rewilding : les grands mammifères font leur retour en Europe</span>
+            
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🐟</span>
+            <span class="hist-title">Jersey quadruple sa zone marine protégée — un record pour les îles britanniques</span>
+            
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🦍</span>
+            <span class="hist-title">Virunga 2026 : sept gorillons nés dont des jumeaux, couronnant une réintroduction historique</span>
+            
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🐆</span>
+            <span class="hist-title">Inde : 53 guépards dont 33 nés sur le sol indien, le Project Cheetah dépasse les espoirs</span>
+            
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🐒</span>
+            <span class="hist-title">Brésil : des singes hurleurs vaccinés contre la fièvre jaune retrouvent la forêt Atlantique</span>
+            
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🐬</span>
+            <span class="hist-title">Indonésie : 32 dugongs observés ensemble dans les Moluques — un record mondial</span>
+            
+          </li>
+          <li class="hist-item">
+            <span class="hist-emoji">🌿</span>
+            <span class="hist-title">Mission Nature 2026 : la France investit dans la restauration concrète des écosystèmes</span>
+            
+          </li>
+          </ul>
+        </div>
   </div>
 
   <footer>
-    8 victoires pour la nature · Mis à jour le 29/03/2026 à 14:25
+    Mis à jour le 29/03/2026 à 15:14
   </footer>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const cards = document.querySelectorAll('.card');
-    const emptyMsg = document.getElementById('empty-msg');
-    const grid = document.getElementById('grid');
-    const historyView = document.getElementById('history-view');
+    const tabs      = document.querySelectorAll('.tab');
+    const cards     = document.querySelectorAll('.card');
+    const emptyMsg  = document.getElementById('empty-msg');
+    const grid      = document.getElementById('grid');
+    const featWrap  = document.querySelector('.featured-wrapper');
+    const histView  = document.getElementById('history-view');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -522,22 +678,23 @@
         const filter = tab.dataset.filter;
 
         if (filter === 'history') {
+          if (featWrap) featWrap.style.display = 'none';
           grid.style.display = 'none';
-          historyView.style.display = 'block';
+          histView.style.display = 'block';
           return;
         }
 
+        if (featWrap) featWrap.style.display = '';
         grid.style.display = 'grid';
-        historyView.style.display = 'none';
+        histView.style.display = 'none';
 
         let visible = 0;
         cards.forEach(card => {
-          const region = card.dataset.region || '';
+          const region   = card.dataset.region || '';
           const isEurope = region === 'Europe';
           const show = filter === 'all'
             || (filter === 'europe' && isEurope)
             || (filter === 'world'  && !isEurope);
-
           card.classList.toggle('hidden', !show);
           if (show) visible++;
         });
