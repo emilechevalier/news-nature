@@ -52,14 +52,22 @@ Réponds UNIQUEMENT avec un tableau JSON (sans markdown, sans backticks, sans ex
 ]"""
 
 WIN_COLOR = {
-    "Rebond de population":        "#2eb82e",
-    "Régénération d'écosystème":   "#4a9a5a",
-    "Nouvelle protection":         "#2196f3",
-    "Réduction de pollution":      "#00bcd4",
-    "Retour d'espèce":             "#8bc34a",
-    "Rewilding":                   "#ff9800",
+    # French keys (SEARCH_PROMPT)
+    "Rebond de population":        "#2d6a4f",
+    "Régénération d'écosystème":   "#457b9d",
+    "Nouvelle protection":         "#024873",
+    "Réduction de pollution":      "#1d7a8a",
+    "Retour d'espèce":             "#606c38",
+    "Rewilding":                   "#8b5e3c",
+    # English keys (news_data.json)
+    "species_recovery":            "#2d6a4f",
+    "habitat_protection":          "#457b9d",
+    "renewable_energy":            "#c4631a",
+    "policy_win":                  "#024873",
+    "scientific_discovery":        "#5c4b8a",
+    "community_action":            "#606c38",
 }
-WIN_DEFAULT_COLOR = "#4a9a5a"
+WIN_DEFAULT_COLOR = "#024873"
 
 
 def load_json(path, default=None):
@@ -105,43 +113,47 @@ def build_email_html(news):
     date_str = datetime.now().strftime("%A %d %B %Y")
     cards_html = ""
     for item in news:
-        win   = item.get("win_type", "Régénération d'écosystème")
+        win   = item.get("win_type", "species_recovery")
         color = WIN_COLOR.get(win, WIN_DEFAULT_COLOR)
+        source = item.get("source_url") or item.get("url", "")
+        source_html = (
+            f'<a href="{source}" style="color:{color}; text-decoration:none; font-size:11px; '
+            f'letter-spacing:1px; text-transform:uppercase; font-family:Helvetica Neue,Arial,sans-serif;">'
+            f'Lire l\'article ↗</a>'
+        ) if source else ""
         cards_html += f"""
         <tr>
           <td style="padding: 0 24px 20px;">
             <table width="100%" cellpadding="0" cellspacing="0"
-                   style="background:#0d2b1a; border:1px solid #1a4a2a; border-radius:10px; overflow:hidden;">
-              <tr><td style="height:3px; background:{color}; padding:0;"></td></tr>
+                   style="background:#ffffff; border:1px solid #e0ddd4; border-top:3px solid {color};">
               <tr>
-                <td style="padding:18px 20px;">
-                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:10px;">
+                <td style="padding:20px 22px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:12px;">
                     <tr>
                       <td>
-                        <span style="display:inline-block; background:rgba(74,154,90,0.15); color:#6abf6a;
-                              border:1px solid rgba(74,154,90,0.3); padding:2px 10px; border-radius:12px;
-                              font-size:11px; margin-right:5px;">{item.get("category","")}</span>
-                        <span style="display:inline-block; background:rgba(46,184,46,0.08); color:#4a8a5a;
-                              border:1px solid rgba(46,184,46,0.15); padding:2px 10px; border-radius:12px;
-                              font-size:11px;">{item.get("region","")}</span>
+                        <span style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:{color};
+                              font-family:Helvetica Neue,Arial,sans-serif; font-weight:600;">{item.get("category","").upper()}</span>
+                        <span style="font-size:10px; color:#ccc; font-family:Helvetica Neue,Arial,sans-serif;"> · </span>
+                        <span style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#999;
+                              font-family:Helvetica Neue,Arial,sans-serif;">{item.get("region","").upper()}</span>
                       </td>
-                      <td align="right" style="font-size:22px;">{item.get("emoji","🌿")}</td>
+                      <td align="right" style="font-size:20px;">{item.get("emoji","🌿")}</td>
                     </tr>
                   </table>
-                  <div style="font-size:15px; font-weight:600; color:#b8e8a0; line-height:1.4; margin-bottom:10px;">
+                  <div style="font-size:16px; font-weight:700; color:#1a1a1a; line-height:1.35; margin-bottom:10px;
+                              font-family:Georgia,'Times New Roman',serif; letter-spacing:-0.2px;">
                     {item.get("title","")}
                   </div>
-                  <div style="font-size:13px; color:#5a8a6a; line-height:1.6; margin-bottom:14px;">
+                  <div style="font-size:13px; color:#555; line-height:1.65; margin-bottom:16px;
+                              font-family:Helvetica Neue,Arial,sans-serif;">
                     {item.get("summary","")}
                   </div>
-                  <table width="100%" cellpadding="0" cellspacing="0">
+                  <table width="100%" cellpadding="0" cellspacing="0"
+                         style="border-top:1px solid #ece9e0;">
                     <tr>
-                      <td style="font-size:11px; color:#2a5a3a;">{item.get("date","")}</td>
-                      <td align="right">
-                        <span style="display:inline-block; width:6px; height:6px; border-radius:50%;
-                              background:{color}; margin-right:5px; vertical-align:middle;"></span>
-                        <span style="font-size:10px; color:{color}; letter-spacing:1px;">{win}</span>
-                      </td>
+                      <td style="font-size:11px; color:#bbb; font-family:Helvetica Neue,Arial,sans-serif;
+                                 padding-top:12px;">{item.get("date","")}</td>
+                      <td align="right" style="padding-top:12px;">{source_html}</td>
                     </tr>
                   </table>
                 </td>
@@ -153,26 +165,30 @@ def build_email_html(news):
     return f"""<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
-<body style="margin:0; padding:0; background:#071209; font-family:Georgia,'Times New Roman',serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#071209; padding:24px 0;">
+<body style="margin:0; padding:0; background:#f5f4ee; font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f4ee; padding:32px 0;">
     <tr><td align="center">
       <table width="640" cellpadding="0" cellspacing="0"
-             style="background:#0a1a0f; border-radius:14px; overflow:hidden; border:1px solid #1a4a2a;">
+             style="background:#fdfcf3; border:1px solid #d8d4c4;">
         <tr>
-          <td style="background:linear-gradient(135deg,#0d2b1a 0%,#0a1a0f 60%,#071209 100%);
-                     padding:32px 28px 24px; border-bottom:1px solid #1a4a2a;">
-            <div style="font-size:11px; letter-spacing:4px; color:#4a9a5a; text-transform:uppercase; margin-bottom:6px;">
-              Agent IA · Bonnes nouvelles de la nature
+          <td style="padding:44px 32px 32px; border-bottom:1px solid #d8d4c4; text-align:center;">
+            <div style="font-size:10px; letter-spacing:4px; color:#aaa; text-transform:uppercase;
+                        margin-bottom:16px; font-family:Helvetica Neue,Arial,sans-serif;">
+              Bonnes nouvelles de la nature
             </div>
-            <div style="font-size:26px; font-weight:700; color:#c8f0b0;">🌿 La Nature Résiste</div>
-            <div style="font-size:13px; color:#3a6a4a; margin-top:8px;">Semaine du {date_str}</div>
+            <div style="font-size:36px; font-weight:700; color:#1a1a1a; letter-spacing:-1.5px;
+                        font-family:Georgia,'Times New Roman',serif;">La Nature Résiste</div>
+            <div style="font-size:11px; color:#999; margin-top:12px; letter-spacing:1px; text-transform:uppercase;
+                        font-family:Helvetica Neue,Arial,sans-serif;">Semaine du {date_str}</div>
           </td>
         </tr>
+        <tr><td style="padding:20px 0 4px;"></td></tr>
         {cards_html}
         <tr>
-          <td style="padding:20px 24px; border-top:1px solid #1a4a2a; text-align:center;">
-            <div style="font-size:11px; color:#2a5a3a;">
-              {len(news)} victoires pour la nature · Sources : web, presse scientifique et environnementale
+          <td style="padding:20px 24px 28px; border-top:1px solid #d8d4c4; text-align:center;">
+            <div style="font-size:10px; color:#bbb; letter-spacing:2px; text-transform:uppercase;
+                        font-family:Helvetica Neue,Arial,sans-serif;">
+              {len(news)} victoires pour la nature cette semaine
             </div>
           </td>
         </tr>
@@ -250,27 +266,28 @@ def build_web_page(news):
 
     cards_html = ""
     for item in news:
-        win   = item.get("win_type", "Régénération d'écosystème")
+        win   = item.get("win_type", "species_recovery")
         color = WIN_COLOR.get(win, WIN_DEFAULT_COLOR)
+        source = item.get("source_url") or item.get("url", "")
+        source_html = (
+            f'<a class="source-link" href="{source}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
+        ) if source else ""
         cards_html += f"""
-        <div class="card" data-region="{item.get('region','')}">
-          <div class="card-bar" style="background:{color}"></div>
+        <div class="card" data-region="{item.get('region','')}" style="border-top:3px solid {color}">
           <div class="card-body">
             <div class="card-meta">
-              <div class="badges">
-                <span class="badge badge-cat">{item.get("category","")}</span>
-                <span class="badge badge-reg">{item.get("region","")}</span>
+              <div class="card-tags">
+                <span class="tag-cat" style="color:{color}">{item.get("category","").upper()}</span>
+                <span class="tag-sep">·</span>
+                <span class="tag-reg">{item.get("region","").upper()}</span>
               </div>
-              <span class="emoji">{item.get("emoji","🌿")}</span>
+              <span class="card-emoji">{item.get("emoji","🌿")}</span>
             </div>
             <h2 class="card-title">{item.get("title","")}</h2>
             <p class="card-summary">{item.get("summary","")}</p>
             <div class="card-footer">
-              <span class="card-date">{item.get("date","")}{(' · <a class="source-link" href="' + (item.get("source_url") or item.get("url","")) + '" target="_blank" rel="noopener">→ source</a>') if (item.get("source_url") or item.get("url")) else ""}</span>
-              <span class="win-badge" style="color:{color}">
-                <span class="win-dot" style="background:{color}"></span>
-                {win}
-              </span>
+              <span class="card-date">{item.get("date","")}</span>
+              {source_html}
             </div>
           </div>
         </div>"""
@@ -280,187 +297,239 @@ def build_web_page(news):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🌿 La Nature Résiste</title>
+  <title>La Nature Résiste</title>
   <meta name="description" content="Les bonnes nouvelles de la nature cette semaine — espèces qui reviennent, écosystèmes qui se régénèrent.">
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+
     body {{
-      background: #0a1a0f;
-      color: #e8f5e0;
+      background: #f5f4ee;
+      color: #1a1a1a;
       font-family: Georgia, 'Times New Roman', serif;
       min-height: 100vh;
     }}
+
     header {{
-      background: linear-gradient(135deg, #0d2b1a 0%, #0a1a0f 60%, #071209 100%);
-      border-bottom: 1px solid #1a4a2a;
-      padding: 40px 24px 28px;
+      background: #fdfcf3;
+      border-bottom: 1px solid #d8d4c4;
+      padding: 52px 24px 40px;
       text-align: center;
     }}
+
     .header-label {{
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 4px;
-      color: #4a9a5a;
+      color: #aaa;
       text-transform: uppercase;
-      margin-bottom: 10px;
-      font-family: -apple-system, sans-serif;
+      margin-bottom: 18px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }}
+
     h1 {{
-      font-size: clamp(24px, 5vw, 36px);
+      font-size: clamp(32px, 6vw, 56px);
       font-weight: 700;
-      color: #c8f0b0;
-      margin-bottom: 8px;
+      color: #1a1a1a;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 16px;
     }}
+
     .header-date {{
-      font-size: 13px;
-      color: #3a6a4a;
-      margin-top: 6px;
-      font-family: -apple-system, sans-serif;
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }}
+
     /* Tabs */
+    .tabs-wrapper {{
+      background: #fdfcf3;
+      border-bottom: 1px solid #d8d4c4;
+    }}
+
     .tabs {{
       display: flex;
       justify-content: center;
-      gap: 8px;
-      padding: 24px 20px 0;
       max-width: 1100px;
       margin: 0 auto;
+      padding: 0 20px;
     }}
+
     .tab {{
-      padding: 7px 22px;
-      border-radius: 20px;
-      border: 1px solid #1a4a2a;
+      padding: 14px 28px;
+      border: none;
+      border-bottom: 2px solid transparent;
       background: transparent;
-      color: #4a7a5a;
-      font-size: 13px;
+      color: #aaa;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       cursor: pointer;
-      font-family: -apple-system, sans-serif;
-      transition: all .2s;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      transition: color .15s, border-color .15s;
+      margin-bottom: -1px;
     }}
-    .tab:hover {{ border-color: #2a6a3a; color: #6abf6a; }}
+
+    .tab:hover {{ color: #1a1a1a; }}
+
     .tab.active {{
-      border-color: #4a9a5a;
-      background: rgba(74,154,90,0.15);
-      color: #8fdc8f;
+      color: #1a1a1a;
+      border-bottom-color: #024873;
     }}
+
     /* Grid */
     #grid {{
       max-width: 1100px;
       margin: 0 auto;
-      padding: 28px 20px 36px;
+      padding: 36px 20px 60px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
     }}
+
     .card {{
-      background: linear-gradient(135deg, #0d2b1a 0%, #0a2015 100%);
-      border: 1px solid #1a4a2a;
-      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #e0ddd4;
       overflow: hidden;
-      transition: transform .2s, border-color .2s;
+      transition: box-shadow .2s, transform .2s;
     }}
-    .card:hover {{ transform: translateY(-3px); border-color: #2a6a3a; }}
+
+    .card:hover {{
+      box-shadow: 0 6px 28px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }}
+
     .card.hidden {{ display: none; }}
-    .card-bar {{ height: 3px; }}
-    .card-body {{ padding: 20px; }}
+
+    .card-body {{ padding: 24px; }}
+
     .card-meta {{
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }}
-    .badges {{ display: flex; gap: 6px; flex-wrap: wrap; }}
-    .badge {{
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-family: -apple-system, sans-serif;
+
+    .card-tags {{
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }}
-    .badge-cat {{
-      background: rgba(74,154,90,0.15);
-      color: #6abf6a;
-      border: 1px solid rgba(74,154,90,0.3);
-    }}
-    .badge-reg {{
-      background: rgba(46,184,46,0.08);
-      color: #4a8a5a;
-      border: 1px solid rgba(46,184,46,0.15);
-    }}
-    .emoji {{ font-size: 24px; }}
-    .card-title {{
-      font-size: 15px;
+
+    .tag-cat {{
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       font-weight: 600;
-      color: #b8e8a0;
-      line-height: 1.4;
-      margin-bottom: 10px;
     }}
+
+    .tag-sep {{
+      font-size: 10px;
+      color: #ccc;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }}
+
+    .tag-reg {{
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }}
+
+    .card-emoji {{ font-size: 20px; line-height: 1; }}
+
+    .card-title {{
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }}
+
     .card-summary {{
       font-size: 13px;
-      color: #5a8a6a;
-      line-height: 1.6;
-      margin-bottom: 14px;
-      font-family: -apple-system, sans-serif;
+      color: #555;
+      line-height: 1.68;
+      margin-bottom: 18px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }}
+
     .card-footer {{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid #ece9e0;
     }}
-    .card-date {{ font-size: 11px; color: #2a5a3a; font-family: -apple-system, sans-serif; }}
+
+    .card-date {{
+      font-size: 11px;
+      color: #bbb;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }}
+
     .source-link {{
       font-size: 11px;
-      color: #4a9a5a;
+      color: #024873;
       text-decoration: none;
-      font-family: -apple-system, sans-serif;
-      letter-spacing: .3px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }}
+
     .source-link:hover {{ text-decoration: underline; }}
-    .win-badge {{
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 10px;
-      letter-spacing: .8px;
-      font-family: -apple-system, sans-serif;
-    }}
-    .win-dot {{ width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }}
+
     .empty-msg {{
       grid-column: 1/-1;
       text-align: center;
       padding: 60px 20px;
-      color: #2a5a3a;
-      font-family: -apple-system, sans-serif;
-      font-size: 14px;
+      color: #bbb;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }}
+
     footer {{
       text-align: center;
-      padding: 24px;
-      font-size: 11px;
-      color: #2a5a3a;
-      border-top: 1px solid #1a4a2a;
-      font-family: -apple-system, sans-serif;
+      padding: 28px 24px;
+      font-size: 10px;
+      color: #bbb;
+      border-top: 1px solid #d8d4c4;
+      background: #fdfcf3;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }}
   </style>
 </head>
 <body>
   <header>
-    <div class="header-label">Agent IA · Bonnes nouvelles de la nature</div>
-    <h1>🌿 La Nature Résiste</h1>
+    <div class="header-label">Agent IA · Conservation de la nature</div>
+    <h1>La Nature Résiste</h1>
     <div class="header-date">Semaine du {date_str}</div>
   </header>
 
-  <div class="tabs">
-    <button class="tab active" data-filter="all">🌍 Toutes</button>
-    <button class="tab" data-filter="europe">🇪🇺 Europe</button>
-    <button class="tab" data-filter="world">🌐 Reste du monde</button>
+  <div class="tabs-wrapper">
+    <div class="tabs">
+      <button class="tab active" data-filter="all">Toutes les régions</button>
+      <button class="tab" data-filter="europe">Europe</button>
+      <button class="tab" data-filter="world">Reste du monde</button>
+    </div>
   </div>
 
   <div id="grid">
     {cards_html}
-    <div class="empty-msg" id="empty-msg" style="display:none">Aucune actualité pour ce filtre cette semaine.</div>
+    <div class="empty-msg" id="empty-msg" style="display:none">Aucune actualité pour ce filtre.</div>
   </div>
 
   <footer>
-    {len(news)} victoires pour la nature · Mis à jour le {updated} · Sources : web, presse scientifique et environnementale
+    {len(news)} victoires pour la nature · Mis à jour le {updated}
   </footer>
 
   <script>
