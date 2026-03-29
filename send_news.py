@@ -51,7 +51,7 @@ Réponds UNIQUEMENT avec un tableau JSON (sans markdown, sans backticks, sans ex
     "emoji": "emoji animal ou nature pertinent",
     "date": "date approximative comme 'Mars 2026'",
     "url": "URL directe vers l'article source (Mongabay, BBC, etc.)",
-    "image_query": "2-4 mots-clés EN ANGLAIS pour trouver une photo pertinente sur Unsplash (ex: 'european bison grassland', 'coral reef fish', 'amazon rainforest aerial')"
+    "image_query": "2-4 mots-clés EN ANGLAIS pour recherche photo nature sur Unsplash. Décris le SUJET VISUEL concret (animal, paysage, écosystème), pas des concepts abstraits. Inclus l'animal ou l'habitat principal + un contexte géographique ou visuel. BON: 'european bison snowy forest', 'coral reef colorful fish underwater', 'amazon canopy aerial green'. MAUVAIS: 'conservation policy', 'biodiversity protection', 'renewable energy chart'."
   }
 ]"""
 
@@ -118,18 +118,30 @@ def fetch_images(news, access_key):
     if not access_key:
         print("No Unsplash key — skipping images.")
         return
+    CATEGORY_COLOR = {
+        "forest": "green", "Forêt": "green",
+        "ocean": "blue", "Océan": "blue",
+        "wildlife": None, "Faune": None,
+        "climate": None, "Politique": None,
+        "biodiversity": None, "Espèces": None,
+        "Rewilding": "green",
+    }
     base = "https://api.unsplash.com/search/photos"
     for item in news:
         query = item.get("image_query", "")
         if not query:
             continue
         try:
-            params = urllib.parse.urlencode({
+            params_dict = {
                 "query": query,
                 "orientation": "landscape",
                 "per_page": 1,
                 "content_filter": "high",
-            })
+            }
+            color = CATEGORY_COLOR.get(item.get("category"))
+            if color:
+                params_dict["color"] = color
+            params = urllib.parse.urlencode(params_dict)
             req = urllib.request.Request(
                 f"{base}?{params}",
                 headers={"Authorization": f"Client-ID {access_key}",
