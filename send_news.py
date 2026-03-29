@@ -173,10 +173,6 @@ def build_email_html(news):
              style="background:#fdfcf3; border:1px solid #d8d4c4;">
         <tr>
           <td style="padding:44px 32px 32px; border-bottom:1px solid #d8d4c4; text-align:center;">
-            <div style="font-size:10px; letter-spacing:4px; color:#aaa; text-transform:uppercase;
-                        margin-bottom:16px; font-family:Helvetica Neue,Arial,sans-serif;">
-              Bonnes nouvelles de la nature
-            </div>
             <div style="font-size:36px; font-weight:700; color:#1a1a1a; letter-spacing:-1.5px;
                         font-family:Georgia,'Times New Roman',serif;">La Nature Résiste</div>
             <div style="font-size:11px; color:#999; margin-top:12px; letter-spacing:1px; text-transform:uppercase;
@@ -727,7 +723,6 @@ def build_web_page(news, history=None):
 </head>
 <body>
   <header>
-    <div class="header-label">Agent IA · Conservation de la nature</div>
     <h1>La Nature Résiste</h1>
     <div class="header-date">Semaine du {date_str}</div>
   </header>
