@@ -370,37 +370,6 @@ def build_web_page(news, history=None):
         slug = label.lower().replace(" ", "-").replace("'", "")
         impact_pills_html += f'<button class="pill" data-impact="{slug}">{label}</button>\n      '
 
-    # Trend analysis for history view
-    def compute_trends(hist):
-        """Find recurring categories/keywords across editions."""
-        from collections import Counter
-        cat_count = Counter()
-        keyword_hits = Counter()
-        # Track which categories appear in which editions
-        for issue in hist:
-            cats_in_issue = set()
-            for a in issue.get("articles", []):
-                cat = a.get("category", "")
-                if cat:
-                    cats_in_issue.add(cat)
-                # Simple keyword extraction from titles
-                for word in a.get("title", "").lower().split():
-                    if len(word) > 5 and word not in ("cette", "cette", "depuis", "entre", "nouvelles", "premier", "première"):
-                        keyword_hits[word] += 1
-            for cat in cats_in_issue:
-                cat_count[cat] += 1
-        trends = []
-        cat_labels = {
-            "wildlife": "Faune", "ocean": "Océan", "forest": "Forêt",
-            "climate": "Climat", "biodiversity": "Biodiversité",
-        }
-        for cat, count in cat_count.most_common():
-            if count >= 2:
-                label = cat_labels.get(cat, cat.title())
-                trends.append(f"{label} : {count} éditions sur {len(hist)}")
-        return trends
-
-    trends = compute_trends(history) if history else []
 
     # Featured article (first) + grid articles (rest)
     featured  = news[0] if news else None
@@ -509,16 +478,7 @@ def build_web_page(news, history=None):
           </div>
         </div>"""
 
-    # History HTML — compact list grouped by issue, with trends header
-    trends_html = ""
-    if trends:
-        pills = " ".join(f'<span class="trend-pill">{t}</span>' for t in trends)
-        trends_html = f"""
-    <div class="trends-box">
-      <div class="trends-title">Fils rouges</div>
-      <div class="trends-pills">{pills}</div>
-    </div>"""
-
+    # History HTML — compact list grouped by issue
     history_html = ""
     for issue in history:
         rows = ""
@@ -981,39 +941,6 @@ def build_web_page(news, history=None):
       letter-spacing: 1px;
     }}
 
-    /* Trends box in history */
-    .trends-box {{
-      background: #fdfcf3;
-      border: 1px solid #d8d4c4;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-    }}
-
-    .trends-title {{
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #aaa;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      margin-bottom: 12px;
-    }}
-
-    .trends-pills {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }}
-
-    .trend-pill {{
-      display: inline-block;
-      padding: 5px 14px;
-      border: 1px solid #2d6a4f;
-      border-radius: 20px;
-      color: #2d6a4f;
-      font-size: 12px;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-    }}
-
     footer {{
       text-align: center;
       padding: 28px 24px;
@@ -1060,7 +987,6 @@ def build_web_page(news, history=None):
   </div>
 
   <div id="history-view">
-    {trends_html}
     {history_html}
   </div>
 
