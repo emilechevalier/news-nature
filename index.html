@@ -66,7 +66,7 @@
 
     .stats-sep { color: #d8d4c4; }
 
-    /* Tabs */
+    /* Tabs + filters */
     .tabs-wrapper {
       background: #fdfcf3;
       border-bottom: 1px solid #d8d4c4;
@@ -104,6 +104,46 @@
     .tab-history {
       margin-left: auto;
       border-left: 1px solid #d8d4c4;
+    }
+
+    /* Impact filter pills */
+    .filters-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filters-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-right: 4px;
+    }
+
+    .pill {
+      padding: 5px 14px;
+      border: 1px solid #d8d4c4;
+      border-radius: 20px;
+      background: transparent;
+      color: #888;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .pill:hover { border-color: #999; color: #555; }
+
+    .pill.active {
+      background: #024873;
+      color: #fff;
+      border-color: #024873;
     }
 
     /* Featured article */
@@ -248,6 +288,46 @@
       font-family: 'Helvetica Neue', Arial, sans-serif;
     }
 
+    /* Impact line — chiffre-choc */
+    .impact-line {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2d6a4f;
+      background: #eef6f0;
+      border-left: 3px solid #2d6a4f;
+      padding: 6px 12px;
+      margin-bottom: 14px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    /* Share button */
+    .share-btn {
+      background: none;
+      border: 1px solid #d8d4c4;
+      color: #888;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .share-btn:hover { border-color: #024873; color: #024873; }
+
+    .share-btn.copied {
+      border-color: #2d6a4f;
+      color: #2d6a4f;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .card-footer {
       display: flex;
       justify-content: space-between;
@@ -359,6 +439,39 @@
       letter-spacing: 1px;
     }
 
+    /* Trends box in history */
+    .trends-box {
+      background: #fdfcf3;
+      border: 1px solid #d8d4c4;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+
+    .trends-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .trends-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .trend-pill {
+      display: inline-block;
+      padding: 5px 14px;
+      border: 1px solid #2d6a4f;
+      border-radius: 20px;
+      color: #2d6a4f;
+      font-size: 12px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
     footer {
       text-align: center;
       padding: 28px 24px;
@@ -379,20 +492,31 @@
   </header>
 
   <div class="stats-bar">
-    <span>Édition n°4</span> <span class="stats-sep">·</span> <span>8 victoires cette semaine</span> <span class="stats-sep">·</span> <span>4 retours d'espèces</span> <span class="stats-sep">·</span> <span>2 protections</span> <span class="stats-sep">·</span> <span>4 régions couvertes</span>
+    <span>Édition n°4</span> <span class="stats-sep">·</span> <span>31 victoires pour la nature depuis le 23 mars 2026</span> <span class="stats-sep">·</span> <span>4 régions couvertes</span>
   </div>
 
   <div class="tabs-wrapper">
     <div class="tabs">
-      <button class="tab active" data-filter="all">Toutes les régions</button>
+      <button class="tab active" data-filter="all">Tout</button>
       <button class="tab" data-filter="europe">Europe</button>
       <button class="tab" data-filter="world">Reste du monde</button>
       <button class="tab tab-history" data-filter="history">Historique</button>
     </div>
   </div>
 
+  <div class="filters-bar" id="filters-bar">
+    <span class="filters-label">Impact :</span>
+    <button class="pill active" data-impact="all">Tous</button>
+    <button class="pill" data-impact="retour-despèces">Retour d'espèces</button>
+      <button class="pill" data-impact="énergies-propres">Énergies propres</button>
+      <button class="pill" data-impact="politiques">Politiques</button>
+      <button class="pill" data-impact="action-locale">Action locale</button>
+      <button class="pill" data-impact="protection-dhabitats">Protection d'habitats</button>
+      
+  </div>
+
   
-  <div class="featured-wrapper">
+  <div class="featured-wrapper" data-region="Océanie" data-wintype="retour-despèces">
     <div class="featured-label">✦ Article phare de la semaine</div>
     <div class="featured-card" style="border-top:4px solid #2d6a4f">
       <div class="featured-image" style="background-image:url(https://images.unsplash.com/photo-1760769570128-4e89c7124365?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxiaWxieSUyMGF1c3RyYWxpYW4lMjBtYXJzdXBpYWwlMjBkZXNlcnR8ZW58MXwwfHx8MTc3NTQ2MDM4Mnww&ixlib=rb-4.1.0&q=80&w=1080)"></div>
@@ -403,10 +527,14 @@
           <span class="tag-reg">OCÉANIE</span>
         </div>
         <h2 class="featured-title">La population de bilbies australiens explose : de 50 à près de 2 000 individus en sept ans</h2>
+        <div class="impact-line">Population x37 en 7 ans</div>
         <p class="featured-summary">Au parc national de Mallee Cliffs en Nouvelle-Galles du Sud, la population de grands bilbies est passée de 50 fondateurs à 1 840 individus, grâce à une zone de reproduction clôturée protégeant ces marsupiaux des chats et renards féraux. À l'échelle nationale, l'Australian Wildlife Conservancy estime désormais 5 330 bilbies sur six sanctuaires, soit quatre fois la population de 2021. Une victoire spectaculaire pour l'une des espèces les plus emblématiques d'Australie.</p>
         <div class="card-footer">
           <span class="card-date">2026-04-05</span>
-          <a class="source-link" href="https://www.australianwildlife.org/bilby-population-at-mallee-cliffs-national-park-reaches-exciting-new-milestone/" target="_blank" rel="noopener">Lire l'article ↗</a>
+          <div class="card-actions">
+            <button class="share-btn" data-url="https://www.australianwildlife.org/bilby-population-at-mallee-cliffs-national-park-reaches-exciting-new-milestone/" data-title="La population de bilbies australiens explose : de 50 à près de 2 000 individus en sept ans" aria-label="Partager">Partager ↗</button>
+            <a class="source-link" href="https://www.australianwildlife.org/bilby-population-at-mallee-cliffs-national-park-reaches-exciting-new-milestone/" target="_blank" rel="noopener">Lire l'article ↗</a>
+          </div>
         </div>
         <div class="image-credit">Photo: <a href="https://unsplash.com/@spiritland_net?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Maxwell Jefferies</a> / Unsplash</div>
       </div>
@@ -415,7 +543,7 @@
 
   <div id="grid">
     
-        <div class="card" data-region="Amériques" style="border-top:3px solid #2d6a4f">
+        <div class="card" data-region="Amériques" data-wintype="retour-despèces" style="border-top:3px solid #2d6a4f">
           <div class="card-image" style="background-image:url(https://images.unsplash.com/photo-1561404075-738a20ab2695?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxvcmNhJTIwd2hhbGUlMjBwYWNpZmljJTIwb2NlYW58ZW58MXwwfHxibHVlfDE3NzU0NjAzODJ8MA&ixlib=rb-4.1.0&q=80&w=400)"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -427,15 +555,19 @@
               <span class="card-emoji">🐳</span>
             </div>
             <h2 class="card-title">Trois orques inconnues venues d'Alaska enchantent les observateurs de Seattle</h2>
+            <div class="impact-line">3 orques jamais vues a Seattle depuis les eaux d'Alaska</div>
             <p class="card-summary">Un pod de trois orques jamais observées dans la région de Seattle a fait plusieurs apparitions spectaculaires dans la baie d'Elliott début avril 2026. Désignées T419, T420 et T421, ces orques « transientes » portent des cicatrices de requins emporte-pièce, signe qu'elles ont voyagé en haute mer. Leur présence témoigne de la bonne santé de l'écosystème marin du Salish Sea, riche en phoques et lions de mer.</p>
             <div class="card-footer">
               <span class="card-date">2026-04-03</span>
-              <a class="source-link" href="https://news.mongabay.com/short-article/2026/04/orcas-never-seen-before-in-seattle-delight-whale-watchers-with-a-visit/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://news.mongabay.com/short-article/2026/04/orcas-never-seen-before-in-seattle-delight-whale-watchers-with-a-visit/" data-title="Trois orques inconnues venues d'Alaska enchantent les observateurs de Seattle" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://news.mongabay.com/short-article/2026/04/orcas-never-seen-before-in-seattle-delight-whale-watchers-with-a-visit/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             <div class="image-credit">Photo: <a href="https://unsplash.com/@rstone_design?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Ryan Stone</a> / Unsplash</div>
           </div>
         </div>
-        <div class="card" data-region="Afrique" style="border-top:3px solid #2d6a4f">
+        <div class="card" data-region="Afrique" data-wintype="retour-despèces" style="border-top:3px solid #2d6a4f">
           <div class="card-image" style="background-image:url(https://images.unsplash.com/photo-1761470632322-16d6d1e48155?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxib25nbyUyMGFudGVsb3BlJTIwYWZyaWNhbiUyMGZvcmVzdHxlbnwxfDB8fHwxNzc1NDYwMzgzfDA&ixlib=rb-4.1.0&q=80&w=400)"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -447,15 +579,19 @@
               <span class="card-emoji">🦌</span>
             </div>
             <h2 class="card-title">Des bongos de montagne quittent les zoos européens pour retrouver le Kenya</h2>
+            <div class="impact-line">1er transfert zoo-nature pour l'espece, objectif 750 d'ici 2050</div>
             <p class="card-summary">Quatre bongos de montagne mâles, parmi les antilopes les plus menacées d'Afrique, seront transférés de zoos européens vers le Mount Kenya Wildlife Conservancy — une première historique. Ce transfert, coordonné par le Chester Zoo pendant 11 ans, s'appuie sur un programme de reproduction et un système de détection par IA développé avec l'Université de Liverpool. L'objectif : atteindre 750 individus sauvages d'ici 2050, contre moins de 100 aujourd'hui.</p>
             <div class="card-footer">
               <span class="card-date">2026-04-03</span>
-              <a class="source-link" href="https://news.mongabay.com/short-article/2026/04/kenya-to-receive-4-mountain-bongos-from-european-zoos/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://news.mongabay.com/short-article/2026/04/kenya-to-receive-4-mountain-bongos-from-european-zoos/" data-title="Des bongos de montagne quittent les zoos européens pour retrouver le Kenya" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://news.mongabay.com/short-article/2026/04/kenya-to-receive-4-mountain-bongos-from-european-zoos/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             <div class="image-credit">Photo: <a href="https://unsplash.com/@justmejuliee?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Julia Taubitz</a> / Unsplash</div>
           </div>
         </div>
-        <div class="card" data-region="Monde" style="border-top:3px solid #c4631a">
+        <div class="card" data-region="Monde" data-wintype="énergies-propres" style="border-top:3px solid #c4631a">
           <div class="card-image" style="background-image:url(https://images.unsplash.com/photo-1762381157076-4872b31961e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVscyUyMHdpbmQlMjB0dXJiaW5lcyUyMGxhbmRzY2FwZXxlbnwxfDB8fHwxNzc1NDYwMzg0fDA&ixlib=rb-4.1.0&q=80&w=400)"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -467,15 +603,19 @@
               <span class="card-emoji">☀️</span>
             </div>
             <h2 class="card-title">Record mondial : 814 GW de solaire et éolien installés en 2025</h2>
+            <div class="impact-line">814 GW installes en 2025, +17 % vs 2024</div>
             <p class="card-summary">Selon le think tank Ember, le monde a installé 814 GW de capacités solaires et éoliennes en 2025, soit 17 % de plus qu'en 2024. Le solaire a dominé avec 647 GW, tandis que l'éolien a bondi de 47 %. La capacité mondiale cumulée dépasse désormais 4 100 GW. Ces nouvelles installations peuvent générer 1 046 TWh par an, de quoi remplacer un septième de la production mondiale de gaz.</p>
             <div class="card-footer">
               <span class="card-date">2026-03-19</span>
-              <a class="source-link" href="https://ember-energy.org/latest-updates/world-adds-a-record-breaking-814-gw-of-solar-and-wind-in-2025/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://ember-energy.org/latest-updates/world-adds-a-record-breaking-814-gw-of-solar-and-wind-in-2025/" data-title="Record mondial : 814 GW de solaire et éolien installés en 2025" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://ember-energy.org/latest-updates/world-adds-a-record-breaking-814-gw-of-solar-and-wind-in-2025/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             <div class="image-credit">Photo: <a href="https://unsplash.com/@hdbernd?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Bernd 📷 Dittrich</a> / Unsplash</div>
           </div>
         </div>
-        <div class="card" data-region="Europe" style="border-top:3px solid #024873">
+        <div class="card" data-region="Europe" data-wintype="politiques" style="border-top:3px solid #024873">
           
           <div class="card-body">
             <div class="card-meta">
@@ -487,15 +627,19 @@
               <span class="card-emoji">🇪🇺</span>
             </div>
             <h2 class="card-title">L'UE met en œuvre la Loi sur la Restauration de la Nature : 30 % des habitats dégradés d'ici 2030</h2>
+            <div class="impact-line">30 % des habitats degrades restaures d'ici 2030</div>
             <p class="card-summary">La première législation européenne de restauration de la nature, entrée en vigueur en 2024, entre dans sa phase critique d'implémentation. Les États membres préparent leurs Plans Nationaux de Restauration pour septembre 2026, avec l'objectif de restaurer 30 % des habitats en mauvais état d'ici 2030. La France et l'Allemagne sont citées en exemple pour leur approche inclusive, et BirdLife salue les progrès concrets dans plusieurs pays pionniers.</p>
             <div class="card-footer">
               <span class="card-date">2026-03-28</span>
-              <a class="source-link" href="https://www.birdlife.org/news/2026/01/20/2026-a-make-or-break-year-for-nature-in-europe/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://www.birdlife.org/news/2026/01/20/2026-a-make-or-break-year-for-nature-in-europe/" data-title="L'UE met en œuvre la Loi sur la Restauration de la Nature : 30 % des habitats dégradés d'ici 2030" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://www.birdlife.org/news/2026/01/20/2026-a-make-or-break-year-for-nature-in-europe/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             
           </div>
         </div>
-        <div class="card" data-region="Europe" style="border-top:3px solid #606c38">
+        <div class="card" data-region="Europe" data-wintype="action-locale" style="border-top:3px solid #606c38">
           <div class="card-image" style="background-image:url(https://images.unsplash.com/photo-1624123801914-07cc853735cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxzdGVwcGUlMjBncmFzc2xhbmQlMjB3aWxkZmxvd2VycyUyMHVrcmFpbmV8ZW58MXwwfHx8MTc3NTQ2MDM4NXww&ixlib=rb-4.1.0&q=80&w=400)"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -507,15 +651,19 @@
               <span class="card-emoji">🦬</span>
             </div>
             <h2 class="card-title">Le rewilding en Ukraine : 13 500 hectares de steppe et zones humides en restauration malgré la guerre</h2>
+            <div class="impact-line">13 500 ha restaures, 240 animaux reintroduits</div>
             <p class="card-summary">Le projet Rewilding Ukraine restaure 13 500 hectares de steppe et de zones humides dans la région d'Odessa, incluant la steppe de Tarutino dans le futur parc national Budzhak. Plus de 240 animaux ont été réintroduits : kulans, marmottes des steppes, daims, grands-ducs et hamsters. Le projet aide aussi les vétérans ukrainiens dans leur réhabilitation, démontrant que la restauration écologique peut guérir les terres et les communautés.</p>
             <div class="card-footer">
               <span class="card-date">2026-03-20</span>
-              <a class="source-link" href="https://rewildingeurope.com/news/free-roaming-fallow-deer-boost-rewilding-efforts-on-the-tarutino-steppe/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://rewildingeurope.com/news/free-roaming-fallow-deer-boost-rewilding-efforts-on-the-tarutino-steppe/" data-title="Le rewilding en Ukraine : 13 500 hectares de steppe et zones humides en restauration malgré la guerre" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://rewildingeurope.com/news/free-roaming-fallow-deer-boost-rewilding-efforts-on-the-tarutino-steppe/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             <div class="image-credit">Photo: <a href="https://unsplash.com/@ingvar_erik?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Igor Karimov</a> / Unsplash</div>
           </div>
         </div>
-        <div class="card" data-region="Europe" style="border-top:3px solid #2d6a4f">
+        <div class="card" data-region="Europe" data-wintype="retour-despèces" style="border-top:3px solid #2d6a4f">
           <div class="card-image" style="background-image:url(https://images.unsplash.com/photo-1765267069981-69dadf057cd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxldXJvcGVhbiUyMGJpc29uJTIwaGVyZCUyMGdyYXNzbGFuZHxlbnwxfDB8fHwxNzc1NDYwMzg2fDA&ixlib=rb-4.1.0&q=80&w=400)"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -527,15 +675,19 @@
               <span class="card-emoji">🦌</span>
             </div>
             <h2 class="card-title">Le Rewilding Espagne passe à l'échelle : 30 000 hectares de pâturage naturel dans les Hautes Terres ibériques</h2>
+            <div class="impact-line">Bison europeen : de 2 500 a 9 000 en 10 ans</div>
             <p class="card-summary">Rewilding Spain va déployer le pâturage naturel sur 30 000 hectares dans les Hautes Terres ibériques, avec des tauros, des chevaux de Przewalski, des bisons européens et des races locales. Ces grands herbivores réduisent le risque d'incendies et restaurent la biodiversité des prairies méditerranéennes. Le nombre de bisons européens sauvages a quadruplé en dix ans, passant de 2 500 à plus de 9 000 individus à travers l'Europe.</p>
             <div class="card-footer">
               <span class="card-date">2026-03-25</span>
-              <a class="source-link" href="https://rewildingeurope.com/blog/why-2026-matters-for-rewilding-in-europe-building-solidarity-for-nature-recovery/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://rewildingeurope.com/blog/why-2026-matters-for-rewilding-in-europe-building-solidarity-for-nature-recovery/" data-title="Le Rewilding Espagne passe à l'échelle : 30 000 hectares de pâturage naturel dans les Hautes Terres ibériques" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://rewildingeurope.com/blog/why-2026-matters-for-rewilding-in-europe-building-solidarity-for-nature-recovery/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             <div class="image-credit">Photo: <a href="https://unsplash.com/@oj_wildframe?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Oskar Jabłoński</a> / Unsplash</div>
           </div>
         </div>
-        <div class="card" data-region="Monde" style="border-top:3px solid #457b9d">
+        <div class="card" data-region="Monde" data-wintype="protection-dhabitats" style="border-top:3px solid #457b9d">
           <div class="card-image" style="background-image:url(https://images.unsplash.com/photo-1717932816720-6aa886d986e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjb3JhbCUyMHJlZWYlMjBjb2xvcmZ1bCUyMGZpc2glMjB1bmRlcndhdGVyfGVufDF8MHx8Ymx1ZXwxNzc1NDYwMzg2fDA&ixlib=rb-4.1.0&q=80&w=400)"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -547,10 +699,14 @@
               <span class="card-emoji">🪸</span>
             </div>
             <h2 class="card-title">Les récifs coralliens montrent des signes de récupération record en Floride et en Indonésie</h2>
+            <div class="impact-line">Objectif : couverture corallienne de 2 % a 25 %</div>
             <p class="card-summary">Le projet Mission: Iconic Reefs de la NOAA vise à restaurer la couverture corallienne de 2 % à 25 % sur sept sites emblématiques du sanctuaire marin des Keys de Floride. En parallèle, à Nusa Penida en Indonésie, un programme innovant plante trois fragments de coraux résistants au climat par voyageur. La Coral Reef Alliance rapporte des avancées majeures en 2025 dans la gestion des aires marines protégées, avec des populations de poissons en hausse sur des millions d'hectares d'océan.</p>
             <div class="card-footer">
               <span class="card-date">2026-03-30</span>
-              <a class="source-link" href="https://coral.org/en/blog/how-coral-reef-conservation-delivered-measurable-impact-in-2025-report/" target="_blank" rel="noopener">Lire l'article ↗</a>
+              <div class="card-actions">
+                <button class="share-btn" data-url="https://coral.org/en/blog/how-coral-reef-conservation-delivered-measurable-impact-in-2025-report/" data-title="Les récifs coralliens montrent des signes de récupération record en Floride et en Indonésie" aria-label="Partager">Partager</button>
+                <a class="source-link" href="https://coral.org/en/blog/how-coral-reef-conservation-delivered-measurable-impact-in-2025-report/" target="_blank" rel="noopener">Lire ↗</a>
+              </div>
             </div>
             <div class="image-credit">Photo: <a href="https://unsplash.com/@muhammad1nabil?utm_source=la_nature_resiste&utm_medium=referral" target="_blank" rel="noopener">Muhammad Nabil</a> / Unsplash</div>
           </div>
@@ -559,6 +715,11 @@
   </div>
 
   <div id="history-view">
+    
+    <div class="trends-box">
+      <div class="trends-title">Fils rouges</div>
+      <div class="trends-pills"><span class="trend-pill">Climat : 3 éditions sur 4</span> <span class="trend-pill">Océan : 3 éditions sur 4</span> <span class="trend-pill">Biodiversité : 3 éditions sur 4</span> <span class="trend-pill">Faune : 3 éditions sur 4</span> <span class="trend-pill">Forêt : 2 éditions sur 4</span></div>
+    </div>
     
         <div class="hist-issue">
           <div class="hist-issue-date">6 April 2026</div>
@@ -738,16 +899,51 @@
   </div>
 
   <footer>
-    Mis à jour le 06/04/2026 à 09:26
+    Mis à jour le 06/04/2026 à 09:47
   </footer>
 
   <script>
-    const tabs      = document.querySelectorAll('.tab');
-    const cards     = document.querySelectorAll('.card');
-    const emptyMsg  = document.getElementById('empty-msg');
-    const grid      = document.getElementById('grid');
-    const featWrap  = document.querySelector('.featured-wrapper');
-    const histView  = document.getElementById('history-view');
+    const tabs       = document.querySelectorAll('.tab');
+    const pills      = document.querySelectorAll('.pill');
+    const cards      = document.querySelectorAll('.card');
+    const emptyMsg   = document.getElementById('empty-msg');
+    const grid       = document.getElementById('grid');
+    const featWrap   = document.querySelector('.featured-wrapper');
+    const histView   = document.getElementById('history-view');
+    const filtersBar = document.getElementById('filters-bar');
+
+    let activeRegion = 'all';
+    let activeImpact = 'all';
+
+    function applyFilters() {
+      // Featured
+      if (featWrap) {
+        const fRegion  = featWrap.dataset.region || '';
+        const fWintype = featWrap.dataset.wintype || '';
+        const fIsEurope = fRegion === 'Europe';
+        const regionOk = activeRegion === 'all'
+          || (activeRegion === 'europe' && fIsEurope)
+          || (activeRegion === 'world'  && !fIsEurope);
+        const impactOk = activeImpact === 'all' || fWintype === activeImpact;
+        featWrap.style.display = (regionOk && impactOk) ? '' : 'none';
+      }
+
+      let visible = 0;
+      cards.forEach(card => {
+        const region   = card.dataset.region || '';
+        const wintype  = card.dataset.wintype || '';
+        const isEurope = region === 'Europe';
+        const regionOk = activeRegion === 'all'
+          || (activeRegion === 'europe' && isEurope)
+          || (activeRegion === 'world'  && !isEurope);
+        const impactOk = activeImpact === 'all' || wintype === activeImpact;
+        const show = regionOk && impactOk;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    }
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -759,26 +955,49 @@
         if (filter === 'history') {
           if (featWrap) featWrap.style.display = 'none';
           grid.style.display = 'none';
+          filtersBar.style.display = 'none';
           histView.style.display = 'block';
           return;
         }
 
-        if (featWrap) featWrap.style.display = '';
         grid.style.display = 'grid';
+        filtersBar.style.display = 'flex';
         histView.style.display = 'none';
+        activeRegion = filter;
+        applyFilters();
+      });
+    });
 
-        let visible = 0;
-        cards.forEach(card => {
-          const region   = card.dataset.region || '';
-          const isEurope = region === 'Europe';
-          const show = filter === 'all'
-            || (filter === 'europe' && isEurope)
-            || (filter === 'world'  && !isEurope);
-          card.classList.toggle('hidden', !show);
-          if (show) visible++;
-        });
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeImpact = pill.dataset.impact;
+        applyFilters();
+      });
+    });
 
-        emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    // Share buttons — Web Share API with clipboard fallback
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const url   = btn.dataset.url;
+        const title = btn.dataset.title;
+        const text  = title + ' — La Nature Résiste';
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: text, url: url });
+          } catch (e) { /* user cancelled */ }
+        } else {
+          try {
+            await navigator.clipboard.writeText(url);
+            btn.textContent = 'Copié !';
+            btn.classList.add('copied');
+            setTimeout(() => {
+              btn.textContent = btn.closest('.featured-content') ? 'Partager ↗' : 'Partager';
+              btn.classList.remove('copied');
+            }, 2000);
+          } catch (e) { /* fallback: do nothing */ }
+        }
       });
     });
   </script>

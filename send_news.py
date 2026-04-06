@@ -51,6 +51,7 @@ Réponds UNIQUEMENT avec un tableau JSON (sans markdown, sans backticks, sans ex
     "emoji": "emoji animal ou nature pertinent",
     "date": "date approximative comme 'Mars 2026'",
     "url": "URL directe vers l'article source (Mongabay, BBC, etc.)",
+    "impact_line": "UN chiffre-choc ou fait marquant très court (max 10 mots) qui ancre l'ampleur de la victoire. Ex: 'Population x37 en 7 ans', 'De 30 à 100 individus en 5 ans', '814 GW installés, +17% vs 2024'. Doit être concret et frappant.",
     "image_query": "2-4 mots-clés EN ANGLAIS pour recherche photo nature sur Unsplash. Décris le SUJET VISUEL concret (animal, paysage, écosystème), pas des concepts abstraits. Inclus l'animal ou l'habitat principal + un contexte géographique ou visuel. BON: 'european bison snowy forest', 'coral reef colorful fish underwater', 'amazon canopy aerial green'. MAUVAIS: 'conservation policy', 'biodiversity protection', 'renewable energy chart'."
   }
 ]"""
@@ -321,8 +322,10 @@ def build_web_page(news, history=None):
     if history is None:
         history = []
 
-    # Stats
+    # Stats — cumulative hope counter across all editions
     edition_num  = len(history)
+    total_victories = sum(len(issue.get("articles", [])) for issue in history)
+    first_date = history[-1].get("label", "") if history else ""
     species_back = sum(1 for a in news if a.get("win_type") in [
         "species_recovery", "Retour d'espèce", "Rebond de population"])
     policy_wins  = sum(1 for a in news if a.get("win_type") in [
@@ -332,14 +335,72 @@ def build_web_page(news, history=None):
         if a.get("region") and a.get("region") not in ("Monde", "")
     ))
 
-    stats_parts = [f"Édition n°{edition_num}", f"{len(news)} victoires cette semaine"]
-    if species_back:
-        stats_parts.append(f"{species_back} retour{'s' if species_back > 1 else ''} d'espèces")
-    if policy_wins:
-        stats_parts.append(f"{policy_wins} protection{'s' if policy_wins > 1 else ''}")
+    stats_parts = [f"Édition n°{edition_num}"]
+    if total_victories and first_date:
+        stats_parts.append(f"{total_victories} victoires pour la nature depuis le {first_date}")
+    else:
+        stats_parts.append(f"{len(news)} victoires cette semaine")
     stats_parts.append(f"{n_regions} régions couvertes")
     stats_html = ' <span class="stats-sep">·</span> '.join(
         f'<span>{p}</span>' for p in stats_parts)
+
+    # Win type labels for filter pills
+    WIN_TYPE_LABELS = {
+        "species_recovery": "Retour d'espèces",
+        "Retour d'espèce": "Retour d'espèces",
+        "Rebond de population": "Retour d'espèces",
+        "policy_win": "Politiques",
+        "Nouvelle protection": "Politiques",
+        "habitat_protection": "Protection d'habitats",
+        "Régénération d'écosystème": "Protection d'habitats",
+        "renewable_energy": "Énergies propres",
+        "scientific_discovery": "Science",
+        "community_action": "Action locale",
+        "Rewilding": "Rewilding",
+    }
+    # Collect unique win_type labels present in this edition
+    win_types_present = {}
+    for a in news:
+        wt = a.get("win_type", "")
+        label = WIN_TYPE_LABELS.get(wt, wt)
+        if label and label not in win_types_present:
+            win_types_present[label] = wt
+    impact_pills_html = ""
+    for label in win_types_present:
+        slug = label.lower().replace(" ", "-").replace("'", "")
+        impact_pills_html += f'<button class="pill" data-impact="{slug}">{label}</button>\n      '
+
+    # Trend analysis for history view
+    def compute_trends(hist):
+        """Find recurring categories/keywords across editions."""
+        from collections import Counter
+        cat_count = Counter()
+        keyword_hits = Counter()
+        # Track which categories appear in which editions
+        for issue in hist:
+            cats_in_issue = set()
+            for a in issue.get("articles", []):
+                cat = a.get("category", "")
+                if cat:
+                    cats_in_issue.add(cat)
+                # Simple keyword extraction from titles
+                for word in a.get("title", "").lower().split():
+                    if len(word) > 5 and word not in ("cette", "cette", "depuis", "entre", "nouvelles", "premier", "première"):
+                        keyword_hits[word] += 1
+            for cat in cats_in_issue:
+                cat_count[cat] += 1
+        trends = []
+        cat_labels = {
+            "wildlife": "Faune", "ocean": "Océan", "forest": "Forêt",
+            "climate": "Climat", "biodiversity": "Biodiversité",
+        }
+        for cat, count in cat_count.most_common():
+            if count >= 2:
+                label = cat_labels.get(cat, cat.title())
+                trends.append(f"{label} : {count} éditions sur {len(hist)}")
+        return trends
+
+    trends = compute_trends(history) if history else []
 
     # Featured article (first) + grid articles (rest)
     featured  = news[0] if news else None
@@ -353,6 +414,11 @@ def build_web_page(news, history=None):
         fsrc_html = (
             f'<a class="source-link" href="{fsrc}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
         ) if fsrc else ""
+        fshare_url = fsrc or "https://emilechevalier.github.io/news-nature/"
+        fshare_html = (
+            f'<button class="share-btn" data-url="{fshare_url}" '
+            f'data-title="{featured.get("title","")}" aria-label="Partager">Partager ↗</button>'
+        )
         fimg = featured.get("image_url_large", "") or featured.get("image_url", "")
         fimg_html = f'<div class="featured-image" style="background-image:url({fimg})"></div>' if fimg else ""
         fcredit = featured.get("image_credit", "")
@@ -361,8 +427,12 @@ def build_web_page(news, history=None):
             f'<div class="image-credit">Photo: <a href="{fcredit_url}?utm_source=la_nature_resiste&utm_medium=referral" '
             f'target="_blank" rel="noopener">{fcredit}</a> / Unsplash</div>'
         ) if fcredit else ""
+        fimpact = featured.get("impact_line", "")
+        fimpact_html = f'<div class="impact-line">{fimpact}</div>' if fimpact else ""
+        fwt_label = WIN_TYPE_LABELS.get(fw, fw)
+        fwt_slug = fwt_label.lower().replace(" ", "-").replace("'", "")
         featured_html = f"""
-  <div class="featured-wrapper">
+  <div class="featured-wrapper" data-region="{featured.get('region','')}" data-wintype="{fwt_slug}">
     <div class="featured-label">✦ Article phare de la semaine</div>
     <div class="featured-card" style="border-top:4px solid {fc}">
       {fimg_html}
@@ -373,10 +443,14 @@ def build_web_page(news, history=None):
           <span class="tag-reg">{featured.get("region","").upper()}</span>
         </div>
         <h2 class="featured-title">{featured.get("title","")}</h2>
+        {fimpact_html}
         <p class="featured-summary">{featured.get("summary","")}</p>
         <div class="card-footer">
           <span class="card-date">{featured.get("date","")}</span>
-          {fsrc_html}
+          <div class="card-actions">
+            {fshare_html}
+            {fsrc_html}
+          </div>
         </div>
         {fcredit_html}
       </div>
@@ -390,8 +464,13 @@ def build_web_page(news, history=None):
         color  = WIN_COLOR.get(win, WIN_DEFAULT_COLOR)
         source = item.get("source_url") or item.get("url", "")
         source_html = (
-            f'<a class="source-link" href="{source}" target="_blank" rel="noopener">Lire l\'article ↗</a>'
+            f'<a class="source-link" href="{source}" target="_blank" rel="noopener">Lire ↗</a>'
         ) if source else ""
+        share_url = source or "https://emilechevalier.github.io/news-nature/"
+        share_html = (
+            f'<button class="share-btn" data-url="{share_url}" '
+            f'data-title="{item.get("title","")}" aria-label="Partager">Partager</button>'
+        )
         img_url = item.get("image_url", "")
         img_html = f'<div class="card-image" style="background-image:url({img_url})"></div>' if img_url else ""
         credit = item.get("image_credit", "")
@@ -400,8 +479,12 @@ def build_web_page(news, history=None):
             f'<div class="image-credit">Photo: <a href="{credit_url}?utm_source=la_nature_resiste&utm_medium=referral" '
             f'target="_blank" rel="noopener">{credit}</a> / Unsplash</div>'
         ) if credit else ""
+        impact = item.get("impact_line", "")
+        impact_html = f'<div class="impact-line">{impact}</div>' if impact else ""
+        wt_label = WIN_TYPE_LABELS.get(win, win)
+        wt_slug = wt_label.lower().replace(" ", "-").replace("'", "")
         cards_html += f"""
-        <div class="card" data-region="{item.get('region','')}" style="border-top:3px solid {color}">
+        <div class="card" data-region="{item.get('region','')}" data-wintype="{wt_slug}" style="border-top:3px solid {color}">
           {img_html}
           <div class="card-body">
             <div class="card-meta">
@@ -413,16 +496,29 @@ def build_web_page(news, history=None):
               <span class="card-emoji">{item.get("emoji","🌿")}</span>
             </div>
             <h2 class="card-title">{item.get("title","")}</h2>
+            {impact_html}
             <p class="card-summary">{item.get("summary","")}</p>
             <div class="card-footer">
               <span class="card-date">{item.get("date","")}</span>
-              {source_html}
+              <div class="card-actions">
+                {share_html}
+                {source_html}
+              </div>
             </div>
             {credit_html}
           </div>
         </div>"""
 
-    # History HTML — compact list grouped by issue
+    # History HTML — compact list grouped by issue, with trends header
+    trends_html = ""
+    if trends:
+        pills = " ".join(f'<span class="trend-pill">{t}</span>' for t in trends)
+        trends_html = f"""
+    <div class="trends-box">
+      <div class="trends-title">Fils rouges</div>
+      <div class="trends-pills">{pills}</div>
+    </div>"""
+
     history_html = ""
     for issue in history:
         rows = ""
@@ -512,7 +608,7 @@ def build_web_page(news, history=None):
 
     .stats-sep {{ color: #d8d4c4; }}
 
-    /* Tabs */
+    /* Tabs + filters */
     .tabs-wrapper {{
       background: #fdfcf3;
       border-bottom: 1px solid #d8d4c4;
@@ -550,6 +646,46 @@ def build_web_page(news, history=None):
     .tab-history {{
       margin-left: auto;
       border-left: 1px solid #d8d4c4;
+    }}
+
+    /* Impact filter pills */
+    .filters-bar {{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }}
+
+    .filters-label {{
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-right: 4px;
+    }}
+
+    .pill {{
+      padding: 5px 14px;
+      border: 1px solid #d8d4c4;
+      border-radius: 20px;
+      background: transparent;
+      color: #888;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      cursor: pointer;
+      transition: all .15s;
+    }}
+
+    .pill:hover {{ border-color: #999; color: #555; }}
+
+    .pill.active {{
+      background: #024873;
+      color: #fff;
+      border-color: #024873;
     }}
 
     /* Featured article */
@@ -694,6 +830,46 @@ def build_web_page(news, history=None):
       font-family: 'Helvetica Neue', Arial, sans-serif;
     }}
 
+    /* Impact line — chiffre-choc */
+    .impact-line {{
+      font-size: 13px;
+      font-weight: 700;
+      color: #2d6a4f;
+      background: #eef6f0;
+      border-left: 3px solid #2d6a4f;
+      padding: 6px 12px;
+      margin-bottom: 14px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 0.3px;
+    }}
+
+    /* Share button */
+    .share-btn {{
+      background: none;
+      border: 1px solid #d8d4c4;
+      color: #888;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .15s;
+    }}
+
+    .share-btn:hover {{ border-color: #024873; color: #024873; }}
+
+    .share-btn.copied {{
+      border-color: #2d6a4f;
+      color: #2d6a4f;
+    }}
+
+    .card-actions {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }}
+
     .card-footer {{
       display: flex;
       justify-content: space-between;
@@ -805,6 +981,39 @@ def build_web_page(news, history=None):
       letter-spacing: 1px;
     }}
 
+    /* Trends box in history */
+    .trends-box {{
+      background: #fdfcf3;
+      border: 1px solid #d8d4c4;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }}
+
+    .trends-title {{
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-bottom: 12px;
+    }}
+
+    .trends-pills {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+
+    .trend-pill {{
+      display: inline-block;
+      padding: 5px 14px;
+      border: 1px solid #2d6a4f;
+      border-radius: 20px;
+      color: #2d6a4f;
+      font-size: 12px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }}
+
     footer {{
       text-align: center;
       padding: 28px 24px;
@@ -830,11 +1039,17 @@ def build_web_page(news, history=None):
 
   <div class="tabs-wrapper">
     <div class="tabs">
-      <button class="tab active" data-filter="all">Toutes les régions</button>
+      <button class="tab active" data-filter="all">Tout</button>
       <button class="tab" data-filter="europe">Europe</button>
       <button class="tab" data-filter="world">Reste du monde</button>
       <button class="tab tab-history" data-filter="history">Historique</button>
     </div>
+  </div>
+
+  <div class="filters-bar" id="filters-bar">
+    <span class="filters-label">Impact :</span>
+    <button class="pill active" data-impact="all">Tous</button>
+    {impact_pills_html}
   </div>
 
   {featured_html}
@@ -845,6 +1060,7 @@ def build_web_page(news, history=None):
   </div>
 
   <div id="history-view">
+    {trends_html}
     {history_html}
   </div>
 
@@ -853,12 +1069,47 @@ def build_web_page(news, history=None):
   </footer>
 
   <script>
-    const tabs      = document.querySelectorAll('.tab');
-    const cards     = document.querySelectorAll('.card');
-    const emptyMsg  = document.getElementById('empty-msg');
-    const grid      = document.getElementById('grid');
-    const featWrap  = document.querySelector('.featured-wrapper');
-    const histView  = document.getElementById('history-view');
+    const tabs       = document.querySelectorAll('.tab');
+    const pills      = document.querySelectorAll('.pill');
+    const cards      = document.querySelectorAll('.card');
+    const emptyMsg   = document.getElementById('empty-msg');
+    const grid       = document.getElementById('grid');
+    const featWrap   = document.querySelector('.featured-wrapper');
+    const histView   = document.getElementById('history-view');
+    const filtersBar = document.getElementById('filters-bar');
+
+    let activeRegion = 'all';
+    let activeImpact = 'all';
+
+    function applyFilters() {{
+      // Featured
+      if (featWrap) {{
+        const fRegion  = featWrap.dataset.region || '';
+        const fWintype = featWrap.dataset.wintype || '';
+        const fIsEurope = fRegion === 'Europe';
+        const regionOk = activeRegion === 'all'
+          || (activeRegion === 'europe' && fIsEurope)
+          || (activeRegion === 'world'  && !fIsEurope);
+        const impactOk = activeImpact === 'all' || fWintype === activeImpact;
+        featWrap.style.display = (regionOk && impactOk) ? '' : 'none';
+      }}
+
+      let visible = 0;
+      cards.forEach(card => {{
+        const region   = card.dataset.region || '';
+        const wintype  = card.dataset.wintype || '';
+        const isEurope = region === 'Europe';
+        const regionOk = activeRegion === 'all'
+          || (activeRegion === 'europe' && isEurope)
+          || (activeRegion === 'world'  && !isEurope);
+        const impactOk = activeImpact === 'all' || wintype === activeImpact;
+        const show = regionOk && impactOk;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      }});
+
+      emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    }}
 
     tabs.forEach(tab => {{
       tab.addEventListener('click', () => {{
@@ -870,26 +1121,49 @@ def build_web_page(news, history=None):
         if (filter === 'history') {{
           if (featWrap) featWrap.style.display = 'none';
           grid.style.display = 'none';
+          filtersBar.style.display = 'none';
           histView.style.display = 'block';
           return;
         }}
 
-        if (featWrap) featWrap.style.display = '';
         grid.style.display = 'grid';
+        filtersBar.style.display = 'flex';
         histView.style.display = 'none';
+        activeRegion = filter;
+        applyFilters();
+      }});
+    }});
 
-        let visible = 0;
-        cards.forEach(card => {{
-          const region   = card.dataset.region || '';
-          const isEurope = region === 'Europe';
-          const show = filter === 'all'
-            || (filter === 'europe' && isEurope)
-            || (filter === 'world'  && !isEurope);
-          card.classList.toggle('hidden', !show);
-          if (show) visible++;
-        }});
+    pills.forEach(pill => {{
+      pill.addEventListener('click', () => {{
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeImpact = pill.dataset.impact;
+        applyFilters();
+      }});
+    }});
 
-        emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    // Share buttons — Web Share API with clipboard fallback
+    document.querySelectorAll('.share-btn').forEach(btn => {{
+      btn.addEventListener('click', async () => {{
+        const url   = btn.dataset.url;
+        const title = btn.dataset.title;
+        const text  = title + ' — La Nature Résiste';
+        if (navigator.share) {{
+          try {{
+            await navigator.share({{ title: text, url: url }});
+          }} catch (e) {{ /* user cancelled */ }}
+        }} else {{
+          try {{
+            await navigator.clipboard.writeText(url);
+            btn.textContent = 'Copié !';
+            btn.classList.add('copied');
+            setTimeout(() => {{
+              btn.textContent = btn.closest('.featured-content') ? 'Partager ↗' : 'Partager';
+              btn.classList.remove('copied');
+            }}, 2000);
+          }} catch (e) {{ /* fallback: do nothing */ }}
+        }}
       }});
     }});
   </script>
