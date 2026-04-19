@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-04-19",
+    "label": "19 April 2026",
+    "articles": [
+      {
+        "title": "France : le Lagopède alpin et le Grand tétras bientôt classés espèces protégées",
+        "summary": "Le ministère de la Transition écologique propose d'inscrire ces deux oiseaux de montagne en déclin sur la liste des espèces protégées, mettant fin à l'autorisation de les chasser malgré leur état de conservation défavorable. Une avancée historique saluée par la LPO après des années de plaidoyer.",
+        "category": "Politique",
+        "region": "Europe",
+        "win_type": "Nouvelle protection",
+        "emoji": "🏔️",
+        "date": "Avril 2026",
+        "url": "https://www.lpo.fr/qui-sommes-nous/espace-presse/communiques/cp-2026/une-avancee-historique-le-ministere-de-la-transition-ecologique-propose-de-classer-le-lagopede-alpin-et-le-grand-tetras-sur-la-liste-des-especes",
+        "impact_line": "Fin de la chasse pour 2 oiseaux alpins en péril",
+        "image_query": "rock ptarmigan alpine mountains snow",
+        "image_url": "https://images.unsplash.com/photo-1759657146786-53919227d5b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxyb2NrJTIwcHRhcm1pZ2FuJTIwYWxwaW5lJTIwbW91bnRhaW5zJTIwc25vd3xlbnwxfDB8fHwxNzc2NTg1NTQ1fDA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1759657146786-53919227d5b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxyb2NrJTIwcHRhcm1pZ2FuJTIwYWxwaW5lJTIwbW91bnRhaW5zJTIwc25vd3xlbnwxfDB8fHwxNzc2NTg1NTQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Christopher Politano",
+        "image_credit_url": "https://unsplash.com/@poli_graphy"
+      },
+      {
+        "title": "Royaume-Uni : les rares papillons Thécla de l'orme reviennent grâce à la plantation citoyenne d'ormes",
+        "summary": "Dans des zones où des bénévoles ont récemment replanté des ormes, les papillons Thécla de l'orme (espèce en danger) ont été observés de nouveau. Leurs chenilles ne se nourrissent que de feuilles d'orme — la restauration ciblée d'habitat a suffi à faire revenir l'espèce.",
+        "category": "Espèces",
+        "region": "Europe",
+        "win_type": "Retour d'espèce",
+        "emoji": "🦋",
+        "date": "17 avril 2026",
+        "url": "https://www.envirolink.org/2026/04/17/rare-white-letter-hairstreak-butterflies-return-following-community-tree-planting-initiative/",
+        "impact_line": "Papillons de retour après replantation d'ormes par des habitants",
+        "image_query": "white-letter hairstreak butterfly elm leaf",
+        "image_url": "https://images.unsplash.com/photo-1757869410261-889a352fc2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHx3aGl0ZS1sZXR0ZXIlMjBoYWlyc3RyZWFrJTIwYnV0dGVyZmx5JTIwZWxtJTIwbGVhZnxlbnwxfDB8fHwxNzc2NTg1NTQ2fDA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1757869410261-889a352fc2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHx3aGl0ZS1sZXR0ZXIlMjBoYWlyc3RyZWFrJTIwYnV0dGVyZmx5JTIwZWxtJTIwbGVhZnxlbnwxfDB8fHwxNzc2NTg1NTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Severina Seidl",
+        "image_credit_url": "https://unsplash.com/@myworldisblue"
+      },
+      {
+        "title": "Lynx ibérique : la population dépasse les 2 000 individus, du jamais vu",
+        "summary": "Le félin emblématique de la péninsule ibérique, jadis au bord de l'extinction, est désormais estimé à plus de 2 000 individus et a été reclassé d'En danger à Vulnérable par l'UICN. Son aire de répartition est passée de 449 km² en 2005 à plus de 3 320 km² aujourd'hui.",
+        "category": "Faune",
+        "region": "Europe",
+        "win_type": "Rebond de population",
+        "emoji": "🐾",
+        "date": "Avril 2026",
+        "url": "https://iucn.org/news/202407/recovery-iberian-lynx-conservation-success-spain",
+        "impact_line": "De 62 individus en 2001 à plus de 2 000 aujourd'hui",
+        "image_query": "iberian lynx mediterranean forest spain"
+      },
+      {
+        "title": "Thaïlande : les bantengs sauvages doublent leur population grâce aux patrouilles anti-braconnage",
+        "summary": "Dans le sanctuaire de Huai Kha Khaeng, cette espèce de bovidé sauvage en danger critique atteint désormais 1 400 individus — la plus grande population d'Asie du Sud-Est. Un succès né des patrouilles SMART, de la restauration d'habitat et d'un écotourisme communautaire qui transforme les riverains en alliés.",
+        "category": "Faune",
+        "region": "Asie",
+        "win_type": "Rebond de population",
+        "emoji": "🐂",
+        "date": "Avril 2026",
+        "url": "https://news.mongabay.com/2026/04/how-wild-cattle-recovery-is-transforming-local-livelihoods-near-key-thai-reserve/",
+        "impact_line": "Population doublée à 1 400 bantengs en 20 ans",
+        "image_query": "banteng wild cattle thailand grassland"
+      },
+      {
+        "title": "Chili : un 47e parc national au bout du monde pour relier 1 700 km de Patagonie",
+        "summary": "Le Chili s'apprête à officialiser le parc national du Cap Froward, 1 550 km² de forêts, tourbières, glaciers et côtes subantarctiques à l'extrémité sud du continent. Ce maillon manquant achève la Route des Parcs, réseau continu de protection reliant Puerto Montt au Cap Horn — refuge du huemul menacé.",
+        "category": "Politique",
+        "region": "Amériques",
+        "win_type": "Nouvelle protection",
+        "emoji": "🏞️",
+        "date": "Avril 2026",
+        "url": "https://www.afar.com/magazine/chile-to-create-cape-froward-national-park",
+        "impact_line": "1 550 km² protégés, corridor de 1 700 km bouclé",
+        "image_query": "patagonia fjord glacier subantarctic forest"
+      },
+      {
+        "title": "Baleines franches de l'Atlantique Nord : 18 baleineaux pour une saison porteuse d'espoir",
+        "summary": "La saison de mise bas 2025-2026 a livré au moins 18 nouveaux baleineaux, dont le neuvième petit de la femelle « Ghost » âgée de 41 ans. Avec environ 380 individus, la population augmente pour la troisième année consécutive — preuve que la réduction des collisions et des engins de pêche fonctionne.",
+        "category": "Océan",
+        "region": "Amériques",
+        "win_type": "Rebond de population",
+        "emoji": "🐋",
+        "date": "Janvier-Avril 2026",
+        "url": "https://www.popsci.com/environment/new-north-atlantic-right-whale-babies/",
+        "impact_line": "18 naissances en une saison, 3e année consécutive de hausse",
+        "image_query": "north atlantic right whale mother calf ocean"
+      },
+      {
+        "title": "Cap symbolique : 10,01 % des océans mondiaux sont désormais officiellement protégés",
+        "summary": "La communauté internationale franchit la barre des 10 % d'océans protégés, une progression acquise en deux ans et représentant une superficie supérieure à celle de l'Union européenne. Un pas majeur vers l'objectif de 30 % de l'océan protégé d'ici 2030 fixé par le cadre mondial de Kunming-Montréal.",
+        "category": "Océan",
+        "region": "Mondial",
+        "win_type": "Nouvelle protection",
+        "emoji": "🌊",
+        "date": "Avril 2026",
+        "url": "https://www.info-quokka.com/p/les-5-infos-positives-et-bonnes-nouvelles-du-jeudi-16-avril-2026",
+        "impact_line": "10,01 % des océans protégés, +surface UE en 2 ans",
+        "image_query": "marine protected area coral reef aerial ocean",
+        "image_url": "https://images.unsplash.com/photo-1618846012520-25b8446684c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxtYXJpbmUlMjBwcm90ZWN0ZWQlMjBhcmVhJTIwY29yYWwlMjByZWVmJTIwYWVyaWFsJTIwb2NlYW58ZW58MXwwfHxibHVlfDE3NzY1ODU1NDh8MA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1618846012520-25b8446684c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxtYXJpbmUlMjBwcm90ZWN0ZWQlMjBhcmVhJTIwY29yYWwlMjByZWVmJTIwYWVyaWFsJTIwb2NlYW58ZW58MXwwfHxibHVlfDE3NzY1ODU1NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Rafael Lopez",
+        "image_credit_url": "https://unsplash.com/@elojoboricua"
+      }
+    ]
+  },
+  {
     "date": "2026-04-12",
     "label": "12 April 2026",
     "articles": [
