@@ -1,5 +1,119 @@
 [
   {
+    "date": "2026-10-18",
+    "label": "18 October 2026",
+    "articles": [
+      {
+        "title": "Amazonie brésilienne : la déforestation tombe à son plus bas niveau depuis 1988",
+        "summary": "D'après les données satellitaires officielles, l'Amazonie brésilienne a perdu 3 335 km² de forêt entre août 2025 et juillet 2026. C'est le chiffre annuel le plus bas depuis le début des relevés en 1988. Le gouvernement attribue cette baisse de 71 % depuis 2023 au retour des contrôles environnementaux et à l'application du code forestier, ce qui montre qu'une volonté politique peut protéger la plus grande forêt tropicale du monde.",
+        "category": "Forêt",
+        "region": "Amériques",
+        "win_type": "Régénération d'écosystème",
+        "emoji": "🌳",
+        "date": "16 octobre 2026",
+        "url": "https://www.news4jax.com/news/world/2026/10/16/brazil-says-amazon-deforestation-fell-to-the-lowest-level-since-1988/",
+        "impact_line": "Déforestation -71 % depuis 2023",
+        "image_query": "amazon rainforest canopy aerial"
+      },
+      {
+        "title": "La Californie crée deux nouvelles aires marines protégées et en agrandit une troisième",
+        "summary": "La Commission californienne de la pêche et de la faune a approuvé deux nouvelles zones marines protégées d'environ 23 km² chacune, au large de Carpinteria et de Point Sal. Le forage et le chalutage y sont désormais interdits. Point Sal est une nourricerie pour les jeunes grands requins blancs, les raies et les phoques communs. La réserve de Point Dume, près de Malibu, gagne aussi 8 km de côte protégée. La demande initiale venait de la tribu Chumash de Santa Ynez.",
+        "category": "Océan",
+        "region": "Amériques",
+        "win_type": "Nouvelle protection",
+        "emoji": "🦈",
+        "date": "16 octobre 2026",
+        "url": "https://www.independent.com/2026/10/16/state-approves-new-marine-protected-areas-on-the-central-coast/",
+        "impact_line": "3 zones marines protégées, une nourricerie de requins blancs",
+        "image_query": "california coast kelp seals",
+        "image_url": "https://images.unsplash.com/photo-1712769206679-54391ea31b8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjYWxpZm9ybmlhJTIwY29hc3QlMjBrZWxwJTIwc2VhbHN8ZW58MXwwfHxibHVlfDE3OTIzMDY5MjF8MA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1712769206679-54391ea31b8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjYWxpZm9ybmlhJTIwY29hc3QlMjBrZWxwJTIwc2VhbHN8ZW58MXwwfHxibHVlfDE3OTIzMDY5MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Scott Greer",
+        "image_credit_url": "https://unsplash.com/@sgreer"
+      },
+      {
+        "title": "Colorado : le plus grand pont pour la faune des États-Unis réduit les collisions de 91 %",
+        "summary": "Un passage à faune construit au-dessus de l'autoroute I-25, dans le Colorado, a fait chuter de 91 % le nombre d'animaux percutés par des véhicules. Cerfs, wapitis et autres mammifères traversent désormais en sécurité. Le résultat montre que des infrastructures bien conçues peuvent reconnecter les habitats et protéger à la fois la faune et les automobilistes.",
+        "category": "Faune",
+        "region": "Amériques",
+        "win_type": "Régénération d'écosystème",
+        "emoji": "🦌",
+        "date": "16 octobre 2026",
+        "url": "https://www.positive.news/society/good-news-stories-from-week-42-of-2026/",
+        "impact_line": "-91 % d'animaux tués sur la route",
+        "image_query": "elk crossing wildlife bridge"
+      },
+      {
+        "title": "Maine : 11 000 acres de terres ancestrales rendues à la nation Penobscot",
+        "summary": "Environ 4 450 hectares de forêt du Maine ont été restitués à la nation Penobscot. C'est la première phase d'un retour prévu d'environ 30 000 acres (12 000 hectares). Le Trust for Public Land avait racheté ces terres à des exploitants forestiers pour les rendre à la tribu. La gestion autochtone des territoires est reconnue comme l'une des façons les plus efficaces de protéger la biodiversité.",
+        "category": "Politique",
+        "region": "Amériques",
+        "win_type": "Nouvelle protection",
+        "emoji": "🌲",
+        "date": "17 octobre 2026",
+        "url": "https://www.goodgoodgood.co/articles/good-news-this-week-october-17-2026",
+        "impact_line": "11 000 acres restitués, 30 000 visés",
+        "image_query": "maine forest river autumn",
+        "image_url": "https://images.unsplash.com/photo-1777633993699-3fd203b4f855?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxtYWluZSUyMGZvcmVzdCUyMHJpdmVyJTIwYXV0dW1ufGVufDF8MHx8fDE3OTIzMDY5MjJ8MA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1777633993699-3fd203b4f855?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxtYWluZSUyMGZvcmVzdCUyMHJpdmVyJTIwYXV0dW1ufGVufDF8MHx8fDE3OTIzMDY5MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Intricate Explorer",
+        "image_credit_url": "https://unsplash.com/@intricateexplorer"
+      },
+      {
+        "title": "Espagne : peindre une pale d'éolienne en noir réduit la mortalité des oiseaux de 74 %",
+        "summary": "Au parc éolien d'El Ruedo, à Cadix, quatre éoliennes ont eu une pale peinte en noir, ce qui les rend plus visibles pour les oiseaux. Comparées aux éoliennes restées blanches, leur mortalité annuelle d'oiseaux a baissé de près de 74 %. Ces résultats rejoignent ceux d'études norvégienne et sud-africaine, et offrent une solution simple pour concilier énergie renouvelable et protection des rapaces.",
+        "category": "Faune",
+        "region": "Europe",
+        "win_type": "Réduction de pollution",
+        "emoji": "🦅",
+        "date": "Octobre 2026",
+        "url": "https://news.mongabay.com/short-article/2026/10/painted-wind-turbines-can-dramatically-reduce-bird-deaths-study-finds/",
+        "impact_line": "-74 % d'oiseaux tués grâce à une pale noire",
+        "image_query": "griffon vulture flying spain",
+        "image_url": "https://images.unsplash.com/photo-1659361927304-3e31979f1e7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxncmlmZm9uJTIwdnVsdHVyZSUyMGZseWluZyUyMHNwYWlufGVufDF8MHx8fDE3OTIzMDY5MjN8MA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1659361927304-3e31979f1e7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxncmlmZm9uJTIwdnVsdHVyZSUyMGZseWluZyUyMHNwYWlufGVufDF8MHx8fDE3OTIzMDY5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Joseph Bouvier",
+        "image_credit_url": "https://unsplash.com/@joeboov"
+      },
+      {
+        "title": "32 millions de dollars pour huit grands projets de restauration de la nature en Europe",
+        "summary": "L'Endangered Landscapes & Seascapes Programme, financé par la fondation Arcadia, finance huit nouveaux projets de restauration de rivières, de zones humides et de forêts à travers l'Europe. L'un d'eux couvre 165 000 hectares le long du Danube moyen. Ces projets accompagnent le règlement européen sur la restauration de la nature, qui vise à restaurer 20 % des terres et des mers de l'UE d'ici 2030.",
+        "category": "Rewilding",
+        "region": "Europe",
+        "win_type": "Rewilding",
+        "emoji": "🦫",
+        "date": "7 octobre 2026",
+        "url": "https://denkstrom.org/en/goodnews/32-million-funds-eight-major-european-nature-restoration-projects/",
+        "impact_line": "165 000 ha restaurés le long du Danube",
+        "image_query": "danube wetland floodplain forest"
+      },
+      {
+        "title": "Tanzanie : 529 éléphants empruntent déjà le premier corridor faunique officiel du pays",
+        "summary": "Dans la vallée de Kilombero, 368 agriculteurs ont cédé volontairement une partie de leurs terres pour créer un corridor de 14 km. Il relie le parc national de Nyerere aux forêts des monts Udzungwa. Sur 15 mois, des pièges photographiques ont filmé 529 éléphants l'empruntant, ainsi que des buffles, des servals et des loutres. C'est un exemple de cohabitation réussie, co-gérée par les communautés et l'État.",
+        "category": "Faune",
+        "region": "Afrique",
+        "win_type": "Régénération d'écosystème",
+        "emoji": "🐘",
+        "date": "Octobre 2026",
+        "url": "https://www.goodgoodgood.co/articles/trail-cameras-wildlife-corridor-tanzania",
+        "impact_line": "529 éléphants filmés, 368 fermiers solidaires",
+        "image_query": "african elephants tanzania forest"
+      },
+      {
+        "title": "Les mangroves regagnent du terrain dans le monde après des décennies de recul",
+        "summary": "Selon le Global Mangrove Watch, la surface mondiale de mangroves a augmenté net de 47 720 hectares entre 1985 et 2025, une inversion de tendance historique. L'Inde, le Pakistan, l'Australie, les Philippines et le Sénégal enregistrent les plus fortes progressions, grâce à la protection des zones humides et aux programmes de restauration. Ces forêts côtières stockent énormément de carbone et protègent les littoraux des tempêtes.",
+        "category": "Forêt",
+        "region": "Asie",
+        "win_type": "Régénération d'écosystème",
+        "emoji": "🌿",
+        "date": "Octobre 2026",
+        "url": "https://news.mongabay.com/2026/10/mangroves-gain-ground-globally-marking-turnaround-after-decades-of-loss/",
+        "impact_line": "+47 720 ha de mangroves en 40 ans",
+        "image_query": "mangrove forest aerial coast"
+      }
+    ]
+  },
+  {
     "date": "2026-06-14",
     "label": "14 June 2026",
     "articles": [
