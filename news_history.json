@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-10-25",
+    "label": "25 October 2026",
+    "articles": [
+      {
+        "title": "L'UE débloque plus de 390 millions d'euros pour 135 nouveaux projets LIFE nature et climat",
+        "summary": "Le 19 octobre, la Commission européenne a sélectionné 135 projets LIFE parmi un record de 1 095 candidatures, pour un investissement total de 579 millions d'euros. Le volet nature et biodiversité reçoit la plus grosse part, plus de 151 millions d'euros pour 29 projets, dont la restauration de dunes côtières en Belgique et la protection de canards plongeurs en Bulgarie. Le financement augmente de 9 % par rapport à 2025.",
+        "category": "Politique",
+        "region": "Europe",
+        "win_type": "Nouvelle protection",
+        "emoji": "🇪🇺",
+        "date": "19 octobre 2026",
+        "url": "https://www.brusselstimes.com/2368528/eu-funds-e390-million-for-135-climate-and-nature-projects",
+        "impact_line": "1 095 candidatures record, financement +9 % vs 2025",
+        "image_query": "coastal sand dunes belgium"
+      },
+      {
+        "title": "Le castor, grand retour de la faune européenne",
+        "summary": "Rewilding Europe présente le retour du castor comme l'un des plus beaux rétablissements du continent : cet ingénieur des écosystèmes recolonise rivières et zones humides de nombreux pays. Après s'être étendu depuis l'Espagne, un castor sauvage a été observé au Portugal pour la première fois depuis environ 500 ans. En construisant leurs barrages, les castors recréent des zones humides qui retiennent l'eau, limitent les sécheresses et accueillent une biodiversité foisonnante.",
+        "category": "Rewilding",
+        "region": "Europe",
+        "win_type": "Retour d'espèce",
+        "emoji": "🦫",
+        "date": "19 octobre 2026",
+        "url": "https://rewildingeurope.com/news/bringing-back-beavers-turning-the-tide-for-natures-eco-engineers/",
+        "impact_line": "De retour au Portugal après 500 ans",
+        "image_query": "eurasian beaver river wetland"
+      },
+      {
+        "title": "La Californie crée ses premières aires marines protégées depuis plus de dix ans, à l'initiative des Chumash",
+        "summary": "La Commission californienne de la pêche et de la chasse a approuvé deux nouvelles aires marines protégées proposées par les tribus chumash, Point Sal et Mishopshno au large de Carpinteria, et agrandi celle de Point Dume près de Malibu. Ce sont les premières aires gérées en coopération avec des tribus dans l'État. Les eaux côtières protégées de Californie atteignent désormais 22,2 %.",
+        "category": "Océan",
+        "region": "Amériques",
+        "win_type": "Nouvelle protection",
+        "emoji": "🌊",
+        "date": "19 octobre 2026",
+        "url": "https://www.gov.ca.gov/2026/10/19/governor-newsom-announces-historic-new-ocean-protections-as-trump-pushes-offshore-drilling/",
+        "impact_line": "+15 000 acres protégés, 22,2 % des eaux côtières",
+        "image_query": "california kelp forest coast"
+      },
+      {
+        "title": "Saison faste pour les tortues marines sur la côte Est des États-Unis",
+        "summary": "Les bénévoles d'Outer Banks Forever ont recensé 409 nids de tortues marines sur le littoral protégé de Cape Hatteras, d'où environ 33 741 bébés tortues ont rejoint l'océan. Plus au sud, la Géorgie a compté 4 174 nids de caouannes, du jamais-vu depuis des décennies. Ces chiffres confirment que les années de protection des plages et des nids portent leurs fruits.",
+        "category": "Espèces",
+        "region": "Amériques",
+        "win_type": "Rebond de population",
+        "emoji": "🐢",
+        "date": "19 octobre 2026",
+        "url": "https://www.outerbanksvoice.com/2026/10/19/outer-banks-forever-identifies-409-sea-turtle-nests-on-national-seashore-in-2026/",
+        "impact_line": "33 741 bébés tortues ont rejoint l'océan",
+        "image_query": "sea turtle hatchlings beach",
+        "image_url": "https://images.unsplash.com/photo-1607896477672-21ffa8e2b36e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxzZWElMjB0dXJ0bGUlMjBoYXRjaGxpbmdzJTIwYmVhY2h8ZW58MXwwfHx8MTc5MjkxNTQ0M3ww&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1607896477672-21ffa8e2b36e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxzZWElMjB0dXJ0bGUlMjBoYXRjaGxpbmdzJTIwYmVhY2h8ZW58MXwwfHx8MTc5MjkxNTQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Amanda Phung",
+        "image_credit_url": "https://unsplash.com/@amandabereckonedwith"
+      },
+      {
+        "title": "Le gibbon de Cao Vit, deuxième grand singe le plus rare du monde, se rétablit lentement",
+        "summary": "Une étude préliminaire menée en septembre par Fauna & Flora, des gardes forestiers et des habitants estime la population entre 77 et 89 individus, répartis en environ 14 groupes. Le dernier comptage, en 2021, en confirmait seulement 74. On croyait cette espèce disparue avant sa redécouverte en 2002, et sa protection repose sur des réserves créées des deux côtés de la frontière entre le Vietnam et la Chine.",
+        "category": "Faune",
+        "region": "Asie",
+        "win_type": "Rebond de population",
+        "emoji": "🐒",
+        "date": "22 octobre 2026",
+        "url": "https://www.natureworldnews.com/articles/73608/20261022/survey-finds-many-89-cao-vit-gibbons-hinting-worlds-second-rarest-ape-slowly-recovering.htm",
+        "impact_line": "De 74 à près de 89 gibbons depuis 2021",
+        "image_query": "gibbon karst forest vietnam"
+      },
+      {
+        "title": "La Tanzanie compte plus de 66 000 éléphants, 20 000 de plus qu'en 2014",
+        "summary": "Le recensement tanzanien de 2024-2025 a dénombré 66 714 éléphants, soit plus de 20 000 de plus qu'en 2014, même si la zone couverte était plus large. En Afrique du Sud, le nombre de rhinocéros a augmenté de 4,9 % et le braconnage a baissé en 2026. La lutte anti-braconnage et la gestion locale des terres partagées avec la faune donnent des résultats concrets.",
+        "category": "Faune",
+        "region": "Afrique",
+        "win_type": "Rebond de population",
+        "emoji": "🐘",
+        "date": "22 octobre 2026",
+        "url": "https://www.namibian.com.na/how-dedicated-conservation-is-bringing-hope-to-africas-wildlife/",
+        "impact_line": "66 714 éléphants, +20 000 depuis 2014",
+        "image_query": "elephant herd tanzania savanna",
+        "image_url": "https://images.unsplash.com/photo-1528732533941-ffd7083d5dfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxlbGVwaGFudCUyMGhlcmQlMjB0YW56YW5pYSUyMHNhdmFubmF8ZW58MXwwfHx8MTc5MjkxNTQ0NHww&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1528732533941-ffd7083d5dfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxlbGVwaGFudCUyMGhlcmQlMjB0YW56YW5pYSUyMHNhdmFubmF8ZW58MXwwfHx8MTc5MjkxNTQ0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "ray rui",
+        "image_credit_url": "https://unsplash.com/@ray30"
+      },
+      {
+        "title": "Des coraux blanchis retrouvent la santé au contact de coraux sains",
+        "summary": "Des chercheurs de Stanford ont montré que des coraux blanchis se rétablissent après seulement trois à cinq jours de contact avec des clones sains : les deux colonies fusionnent et les algues vitales passent de l'une à l'autre. Les cinq fragments blanchis mis au contact de leur clone sain s'étaient rétablis en sept semaines, alors que ceux laissés seuls sont morts. Cette découverte, encore limitée au laboratoire, ouvre une nouvelle piste pour restaurer les récifs.",
+        "category": "Océan",
+        "region": "Mondial",
+        "win_type": "Régénération d'écosystème",
+        "emoji": "🪸",
+        "date": "15 octobre 2026",
+        "url": "https://www.euronews.com/2026/10/15/theyre-not-dead-yet-bleached-corals-recover-in-record-time-after-touching-healthy-clones",
+        "impact_line": "5 coraux blanchis sur 5 rétablis en 7 semaines",
+        "image_query": "coral reef colorful underwater",
+        "image_url": "https://images.unsplash.com/photo-1637308105802-2072fe998076?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjb3JhbCUyMHJlZWYlMjBjb2xvcmZ1bCUyMHVuZGVyd2F0ZXJ8ZW58MXwwfHxibHVlfDE3OTI5MTU0NDR8MA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1637308105802-2072fe998076?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjb3JhbCUyMHJlZWYlMjBjb2xvcmZ1bCUyMHVuZGVyd2F0ZXJ8ZW58MXwwfHxibHVlfDE3OTI5MTU0NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Oleksandr Sushko",
+        "image_credit_url": "https://unsplash.com/@wolfalexs"
+      }
+    ]
+  },
+  {
     "date": "2026-10-18",
     "label": "18 October 2026",
     "articles": [
