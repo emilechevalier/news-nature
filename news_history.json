@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-11-22",
+    "label": "22 November 2026",
+    "articles": [
+      {
+        "title": "Ladakh : la population de grues à cou noir bondit de 25 % en un an",
+        "summary": "Le recensement 2026 compte 108 grues à cou noir au Ladakh, contre 87 en 2025, dont 22 juvéniles (17 l'an dernier). Le nombre d'adultes augmente en moyenne d'environ 13 % par an depuis 2021. Ce résultat montre que la protection des zones humides d'altitude de l'Himalaya fonctionne pour cette espèce emblématique et menacée.",
+        "category": "Espèces",
+        "region": "Asie",
+        "win_type": "Rebond de population",
+        "emoji": "🦩",
+        "date": "17 novembre 2026",
+        "url": "https://aninews.in/news/national/general-news/monumental-milestone-for-ladakh-as-black-necked-crane-population-reaches-108-in-2026-registering-25-rise-from-202520261117162230/",
+        "impact_line": "De 87 à 108 grues en un an",
+        "image_query": "black-necked crane himalaya wetland"
+      },
+      {
+        "title": "COP31 : plus de 30 millions de dollars pour les récifs coralliens de 22 pays",
+        "summary": "Le 17 novembre, à la COP31 d'Antalya, le Fonds mondial pour les récifs coralliens (GFCR), soutenu par l'ONU, a annoncé plus de 30 millions de dollars de nouveaux investissements et de dons. L'argent financera des projets de résilience des récifs dans 22 pays en développement. L'Irlande rejoint le fonds comme nouvel État partenaire, avec le Royaume-Uni et l'Allemagne parmi les soutiens.",
+        "category": "Océan",
+        "region": "Mondial",
+        "win_type": "Nouvelle protection",
+        "emoji": "🪸",
+        "date": "17 novembre 2026",
+        "url": "https://www.unep.org/en/news-and-stories/press-release/over-us30-million-announced-strengthen-coral-reef-resilience-and",
+        "impact_line": "30 M$ pour les récifs de 22 pays",
+        "image_query": "coral reef colorful fish underwater",
+        "image_url": "https://images.unsplash.com/photo-1637308105802-2072fe998076?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjb3JhbCUyMHJlZWYlMjBjb2xvcmZ1bCUyMGZpc2glMjB1bmRlcndhdGVyfGVufDF8MHx8Ymx1ZXwxNzk1MzM0NDk1fDA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1637308105802-2072fe998076?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxjb3JhbCUyMHJlZWYlMjBjb2xvcmZ1bCUyMGZpc2glMjB1bmRlcndhdGVyfGVufDF8MHx8Ymx1ZXwxNzk1MzM0NDk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Oleksandr Sushko",
+        "image_credit_url": "https://unsplash.com/@wolfalexs"
+      },
+      {
+        "title": "Les PFAS reculent d'environ 30 % dans les rivières anglaises",
+        "summary": "Un nouveau rapport du gouvernement britannique montre que les concentrations de deux « polluants éternels » majeurs ont baissé d'environ 30 % et 29 % dans les rivières d'Angleterre. Les données permettront aussi de repérer les pires foyers de pollution pour accélérer leur dépollution. C'est la preuve que l'interdiction des PFAS les plus anciens donne des résultats mesurables.",
+        "category": "Politique",
+        "region": "Europe",
+        "win_type": "Réduction de pollution",
+        "emoji": "💧",
+        "date": "Novembre 2026",
+        "url": "https://gov.uk/government/news/new-report-shows-progress-in-cutting-levels-of-forever-chemicals-in-englands-rivers",
+        "impact_line": "Jusqu'à -30 % de PFAS clés dans les rivières",
+        "image_query": "english river clear water countryside",
+        "image_url": "https://images.unsplash.com/photo-1622532999708-afc7c8f4b88d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxlbmdsaXNoJTIwcml2ZXIlMjBjbGVhciUyMHdhdGVyJTIwY291bnRyeXNpZGV8ZW58MXwwfHx8MTc5NTMzNDQ5Nnww&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1622532999708-afc7c8f4b88d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxlbmdsaXNoJTIwcml2ZXIlMjBjbGVhciUyMHdhdGVyJTIwY291bnRyeXNpZGV8ZW58MXwwfHx8MTc5NTMzNDQ5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "bennoptic",
+        "image_credit_url": "https://unsplash.com/@bennoptic"
+      },
+      {
+        "title": "Dix chevaux semi-sauvages arrivent dans les Alpes du Dauphiné",
+        "summary": "Dix chevaux semi-sauvages ont été lâchés dans les Alpes du Dauphiné, le plus grand projet de rewilding de France, grâce au European Wildlife Comeback Fund. En broutant, ils recréent des paysages ouverts et en mosaïque, favorables à la biodiversité. Ils réduisent aussi la végétation sèche qui alimente les incendies.",
+        "category": "Rewilding",
+        "region": "Europe",
+        "win_type": "Rewilding",
+        "emoji": "🐎",
+        "date": "16 novembre 2026",
+        "url": "https://rewildingeurope.com/landscapes/dauphine-alps/",
+        "impact_line": "10 chevaux, le plus grand rewilding de France",
+        "image_query": "wild horses alpine meadow france"
+      },
+      {
+        "title": "Les vautours moines poursuivent leur retour dans les Rhodopes bulgares",
+        "summary": "Les vautours moines réintroduits depuis 2023 dans les Rhodopes, en Bulgarie, ont connu une nouvelle saison de reproduction réussie en 2026. Plusieurs couples ont élevé des poussins, une première dans ces montagnes depuis plus de 30 ans. Ce charognard joue un rôle clé de « nettoyeur » des écosystèmes, et d'autres lâchers sont prévus jusqu'en 2029.",
+        "category": "Faune",
+        "region": "Europe",
+        "win_type": "Retour d'espèce",
+        "emoji": "🦅",
+        "date": "17 novembre 2026",
+        "url": "https://rewildingeurope.com/tag/rewilding-rhodopes/",
+        "impact_line": "Premiers poussins depuis plus de 30 ans",
+        "image_query": "cinereous vulture flying mountains"
+      },
+      {
+        "title": "Floride : 22 400 hectares de nature protégés pour toujours",
+        "summary": "Le 17 novembre, le gouverneur et le cabinet de Floride ont approuvé le financement de la conservation permanente de 55 438 acres (environ 22 400 ha) répartis sur 7 propriétés. Ces terres renforcent le Florida Wildlife Corridor. Ce corridor relie des habitats essentiels à des espèces comme la panthère de Floride et protège les ressources en eau de l'État.",
+        "category": "Politique",
+        "region": "Amériques",
+        "win_type": "Nouvelle protection",
+        "emoji": "🐆",
+        "date": "17 novembre 2026",
+        "url": "https://floridawildlifecorridor.org/november-2026-cabinet-conservation-approvals/",
+        "impact_line": "55 438 acres protégés en une décision",
+        "image_query": "florida wetland forest aerial",
+        "image_url": "https://images.unsplash.com/photo-1682082128593-8bc55bd8521f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxmbG9yaWRhJTIwd2V0bGFuZCUyMGZvcmVzdCUyMGFlcmlhbHxlbnwxfDB8fHwxNzk1MzM0NDk4fDA&ixlib=rb-4.1.0&q=80&w=400",
+        "image_url_large": "https://images.unsplash.com/photo-1682082128593-8bc55bd8521f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MDk4MjR8MHwxfHNlYXJjaHwxfHxmbG9yaWRhJTIwd2V0bGFuZCUyMGZvcmVzdCUyMGFlcmlhbHxlbnwxfDB8fHwxNzk1MzM0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "image_credit": "Julius Hildebrandt",
+        "image_credit_url": "https://unsplash.com/@julihi007"
+      },
+      {
+        "title": "62 jeunes couleuvres de San Francisco relâchées dans la nature, une première",
+        "summary": "Pour la première fois, des scientifiques ont relâché 62 jeunes couleuvres de San Francisco (San Francisco garter snake), élevées au zoo de la ville. Ce serpent aux couleurs vives est protégé au niveau fédéral depuis 1967 et figure parmi les reptiles les plus menacés des États-Unis. Ce lâcher ouvre une nouvelle étape pour reconstituer ses populations sauvages.",
+        "category": "Espèces",
+        "region": "Amériques",
+        "win_type": "Retour d'espèce",
+        "emoji": "🐍",
+        "date": "17 novembre 2026",
+        "url": "https://washingtonpost.com/lifestyle/2026/11/17/62-snakes-were-just-released-into-wild-this-is-good-news-we-promise",
+        "impact_line": "62 serpents relâchés, une première depuis 1967",
+        "image_query": "garter snake grass california"
+      }
+    ]
+  },
+  {
     "date": "2026-10-25",
     "label": "25 October 2026",
     "articles": [
